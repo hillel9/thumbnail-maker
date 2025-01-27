@@ -1,0 +1,36 @@
+:root {
+    /* Primary Colors */
+    --primary-light: #006efa;
+    --primary-main: #006efa;
+    --primary-dark: #c7009c;
+    --primary-contrastText: #ffffff;
+  
+    /* Translucent Colors */
+    --translucent-main: #fff;
+    --translucent-dark: #000;
+    --translucent-light: #fff;
+    --translucent-contrastText: #fff;
+    --translucent-commonBlack: #000000;
+    --translucent-commonWhite: #FFFFFF;
+  
+    /* Tones */
+    --tone1: #ffffff;
+    --tone2: #cccccc;
+    --tone3: #999999;
+    --tone4: #666666;
+    --tone5: #525252;
+    --tone6: #383838;
+    --tone7: #212121;
+    --tone8: #000000;
+    --surface-background: #121212;
+    --surface-paper: #242424;
+    --surface-elevated: #333333;
+    --surface-protection: #3D3D3D;
+  
+    /* Danger Colors */
+    --danger-main: #CA1C2D;
+    --danger-light: #E33547;
+    --danger-dark: #9D1523;
+    --danger-contrastText: #FFFFFF;
+  }
+  

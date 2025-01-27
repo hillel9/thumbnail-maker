@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poster maker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&family=Open+Sans:wght@400;700&family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&family=Poppins:wght@400;700&family=Raleway:wght@400;700&family=Playfair+Display:wght@400;700&family=Ubuntu:wght@400;700&family=Oswald:wght@400;700&family=Source+Serif+Pro:wght@400;700&family=Quicksand:wght@400;700&family=Fira+Sans:wght@400;700&family=Spectral:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <div class="wrapper">
+      <div class="sidebar">
+        <div class="panel" data-panel="initial">
+
+        </div>
+        <!--End initial panel-->
+
+        <div class="panel" data-panel="main">
+          <div class="heading">
+            <figure><img src="img/thumbnail-maker-illustration.svg" alt=""></figure>
+            <div>
+              <h2 class="heading-2">AI Thumbnail maker</h2>
+              <p class="heading-description">Create your own thumbnail with AI</p>
+            </div>
+          </div>
+          <form id="webhookForm" class="webhook-form">
+            <div class="form-group">
+              <label for="theme" class="form-label">Theme of your poster</label>
+              <input type="text" class="text-input" id="theme" required placeholder="E.g. a poster about paris or a Beatles album cover..." autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="theme" class="form-label">Image style</label>
+              <select class="select-input" id="style" required>
+                <option value="Digital art, modern, clean" selected>Digital art</option>
+                <option value="impressionist">Impressionist</option>
+                <option value="expressionism">Expressionism</option>
+                <option value="abstract">Abstract</option>
+                <option value="cubism">Cubism</option>
+                <option value="surrealism">Surrealism</option>
+                <option value="pop art">Pop Art</option>
+                <option value="swiss international style">Swiss style</option>
+                <option value="vintage travel advertisements mid-20th">Vintage</option>
+                <option value="bauhaus">Bauhaus</option>
+                <option value="realistism">Photorealistic</option>
+                <option value="3d render">3D Render</option>
+                <option value="watercolor">Watercolor</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="image-description" class="form-label">Additional image description (Optional)</label>
+              <input type="text" class="text-input" id="image-description" placeholder="Write here what your image should include..." autocomplete="off">
+            </div>
+            <button type="submit" class="btn primary">Generate</button>
+          </form>
+
+
+        </div>
+        <!--End main panel-->
+      </div>
+      <div class="preview-area"></div>
+    </div>
+    <script src="js/variables.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>  

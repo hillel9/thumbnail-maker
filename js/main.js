@@ -99,7 +99,19 @@ title.addEventListener("focus", function () {
   showPanel('title-edit');
 })
 
+paragraph.addEventListener("focus", function () {
+  showPanel('paragraph-edit');
+})
+
 titleEditDone.addEventListener("click", function () {
+  showPanel('designer');
+})
+
+paragraphEditDone.addEventListener("click", function () {
+  showPanel('designer');
+})
+
+colorOverlay.addEventListener("click", function () {
   showPanel('designer');
 })
 
@@ -120,7 +132,7 @@ function changeFont(targetLayer, fontSelector){
     case "Montserrat":
       targetLayer.style.fontFamily = font.Montserrat;
       break;
-    case "PlayfairDisplay":
+    case "Playfair Display":
       targetLayer.style.fontFamily = font.PlayfairDisplay;
       break;
     case "Ubuntu":
@@ -147,6 +159,12 @@ titleFontSelector.addEventListener("change", function () {
 changeFont(title,titleFontSelector.value);
 });
 
+// Update paragraph font
+
+paragraphFontSelector.addEventListener("change", function () {
+  changeFont(paragraph, paragraphFontSelector.value);
+});
+
 // Update title styles
 
 document.getElementById("turn-bold-title").onchange = () => {
@@ -161,16 +179,31 @@ document.getElementById("turn-uppercase-title").onchange = () => {
   title.classList.toggle("uppercase");
 };
 
-// const slider = document.getElementById("opacitySlider");
-// const opacityValue = document.getElementById("opacityValue");
+// Update paragraph styles
 
-// slider.addEventListener("input", function () {
-//   const value = this.value;
-//   const opacity = value / 100;
+document.getElementById("turn-bold-paragraph").onchange = () => {
+  paragraph.classList.toggle("bold");
+};
 
-//   colorOverlay.style.opacity = opacity;
-//   opacityValue.textContent = value + "%";
-// });
+document.getElementById("turn-italic-paragraph").onchange = () => {
+  paragraph.classList.toggle("italic");
+};
+
+document.getElementById("turn-uppercase-paragraph").onchange = () => {
+  paragraph.classList.toggle("uppercase");
+};
+
+// Color opacity slider
+const slider = document.getElementById("opacitySlider");
+const opacityValue = document.getElementById("opacityValue");
+
+slider.addEventListener("input", function () {
+  const value = this.value;
+  const opacity = value / 100;
+
+  colorOverlay.style.opacity = opacity;
+  opacityValue.textContent = value + "%";
+});
 
 // Layout selector
 
@@ -252,25 +285,37 @@ titleFontSizeSlider.addEventListener("input", function () {
   titleFontSizeValue.textContent = size;
 });
 
-// titleLetterSpacingSlider.addEventListener("input", function () {
-//   const value = this.value;
-//   const size = value + "px";
+// Paragraph font size
 
-//   title.style.letterSpacing = size;
-//   titleLetterSpacingValue.textContent = size;
-// });
+paragraphFontSizeSlider.addEventListener("input", function () {
+  const value = this.value;
+  const size = value + "px";
+
+  paragraph.style.fontSize = size;
+  paragraphFontSizeValue.textContent = size;
+});
+
+// Title letter spacing
+
+titleLetterSpacingSlider.addEventListener("input", function () {
+  const value = this.value;
+  const size = value + "px";
+
+  title.style.letterSpacing = size;
+  titleLetterSpacingValue.textContent = size;
+});
 
 
 // Element scale slider
-const elementScaleSlider= document.getElementById("element-scale-slider");
-const elementScaleValue = document.getElementById("element-scale-value");
+// const elementScaleSlider= document.getElementById("element-scale-slider");
+// const elementScaleValue = document.getElementById("element-scale-value");
 
-elementScaleSlider.addEventListener("input", function () {
-  const value = this.value;
+// elementScaleSlider.addEventListener("input", function () {
+//   const value = this.value;
 
-  outputElement.style.transform = `scale(${value})`;
-  elementScaleValue.textContent = value;
-});
+//   outputElement.style.transform = `scale(${value})`;
+//   elementScaleValue.textContent = value;
+// });
 
 
 

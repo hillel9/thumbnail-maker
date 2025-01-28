@@ -13,10 +13,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <div class="wrapper">
       <div class="sidebar">
-        <div class="panel" data-panel="initial">
-
-        </div>
-        <!--End initial panel-->
 
         <div class="panel" data-panel="main">
           <div class="heading">
@@ -61,6 +57,13 @@
         <div class="panel" data-panel="designer">
           <div class="designer-general">
             <h2 class="heading-1">Edit</h2>
+            <div class="slider-container">
+              <div class="form-label">Color overlay opacity</div>
+              <div class="slider-box">
+                <span class="slider-value" id="opacityValue">60%</span>
+                <input type="range" min="0" max="100" value="60" class="opacity-slider" id="opacitySlider">
+              </div>
+            </div>
             <div class="form-group">
               <label for="font-family" class="form-label">Visibility</label>
               <div class="checkbox-group">
@@ -133,16 +136,76 @@
               </div>
             </div>
             <div class="slider-container">
-              <div class="value-display">Font size</div>
+              <div class="form-label">Font size</div>
               <div class="slider-box">
                 <span class="slider-value" id="title-font-size-value">72</span>
-                <input type="range" min="50" max="120" value="72" id="title-font-size-slider">
+                <input type="range" min="16" max="120" value="72" id="title-font-size-slider">
+              </div>
+            </div>
+            <div class="slider-container">
+              <div class="form-label">Letter spacing</div>
+              <div class="slider-box">
+                <span class="slider-value" id="title-letter-spacing-value">0</span>
+                <input type="range" min="-4" max="4" value="0" id="title-letter-spacing-slider">
               </div>
             </div>
             <button id="title-edit-done" class="btn primary">Done</button>         
           </div>
         </div>
-      </div>
+        <!--End title edit-->
+
+        <div class="panel" data-panel="paragraph-edit">
+          <div class="layer-edit">
+            <h2 class="heading-1">Edit paragraph</h2>
+            <div class="form-group">
+              <label for="paragraph-font-selector" class="form-label">Font family</label>
+              <select class="select-input" id="paragraph-font-selector">
+                <option value="Poppins" style="font-family: 'Poppins', sans-serif">Poppins</option>
+                <option value="Lora" style="font-family: 'Lora', serif">Lora</option>
+                <option value="Open Sans" style="font-family: 'Open Sans', sans-serif">Open Sans</option>
+                <option value="Merriweather" style="font-family: 'Merriweather', serif">Merriweather</option>
+                <option value="Montserrat" style="font-family: 'Montserrat', sans-serif">Montserrat</option>
+                <option value="Raleway" style="font-family: 'Raleway', sans-serif">Raleway</option>
+                <option value="Playfair Display" style="font-family: 'Playfair Display', serif">Playfair Display</option>
+                <option value="Ubuntu" style="font-family: 'Ubuntu', sans-serif">Ubuntu</option>
+                <option value="Oswald" style="font-family: 'Oswald', sans-serif">Oswald</option>
+                <option value="Source Serif Pro" style="font-family: 'Source Serif Pro', serif">Source Serif Pro</option>
+                <option value="Quicksand" style="font-family: 'Quicksand', sans-serif">Quicksand</option>
+                <option value="Fira Sans" style="font-family: 'Fira Sans', sans-serif">Fira Sans</option>
+                <option value="Spectral" style="font-family: 'Spectral', serif">Spectral</option>
+                <option value="Roboto" style="font-family: 'Roboto', sans-serif">Roboto</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="font-family" class="form-label">Font styles</label>
+              <div class="checkbox-group">
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="turn-bold-paragraph">
+                  <label for="turn-bold">Bold</label>
+                </div>
+      
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="turn-italic-paragraph">
+                  <label for="turn-italic">Italic</label>
+                </div>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="turn-uppercase-paragraph">
+                  <label for="turn-uppercase">Uppercase</label>
+                </div>
+              </div>
+            </div>
+            <div class="slider-container">
+              <div class="form-label">Font size</div>
+              <div class="slider-box">
+                <span class="slider-value" id="paragraph-font-size-value">36</span>
+                <input type="range" min="16" max="120" value="36" id="paragraph-font-size-slider">
+              </div>
+            </div>
+            <button id="paragraph-edit-done" class="btn primary">Done</button>         
+          </div>
+        </div>
+        <!--End paragraph edit-->
+      </div> <!--End sidebar--> 
 
       <div class="preview-area">
 

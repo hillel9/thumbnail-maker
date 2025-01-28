@@ -57,11 +57,20 @@ const font = {
 };
 
 // Designer variables
-const titleFontSelector = document.getElementById("title-font-selector");
+
 const designer = document.getElementById("designer");
-const titleEditDone = document.getElementById("title-edit-done");
 const elementEditDone = document.getElementById("element-edit-done");
+const titleEditDone = document.getElementById("title-edit-done");
 const titleFontSizeSlider= document.getElementById("title-font-size-slider");
 const titleFontSizeValue = document.getElementById("title-font-size-value");
 const titleLetterSpacingSlider= document.getElementById("title-letter-spacing-slider");
 const titleLetterSpacingValue = document.getElementById("title-letter-spacing-value");
+const titleFontSelector = document.getElementById("title-font-selector");
+
+
+const paragraphEditDone = document.getElementById("paragraph-edit-done");
+const paragraphFontSizeSlider = document.getElementById("paragraph-font-size-slider");
+const paragraphFontSizeValue = document.getElementById("paragraph-font-size-value");
+const paragraphLetterSpacingSlider = document.getElementById("paragraph-letter-spacing-slider");
+const paragraphLetterSpacingValue = document.getElementById("paragraph-letter-spacing-value");
+const paragraphFontSelector = document.getElementById("paragraph-font-selector");

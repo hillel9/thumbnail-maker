@@ -6,6 +6,7 @@
   <title>Poster maker</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&family=Open+Sans:wght@400;700&family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&family=Poppins:wght@400;700&family=Raleway:wght@400;700&family=Playfair+Display:wght@400;700&family=Ubuntu:wght@400;700&family=Oswald:wght@400;700&family=Source+Serif+Pro:wght@400;700&family=Quicksand:wght@400;700&family=Fira+Sans:wght@400;700&family=Spectral:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="generic-styles.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
           <div class="heading">
             <figure><img src="img/thumbnail-maker-illustration.svg" alt=""></figure>
             <div>
-              <h2 class="heading-2">AI Thumbnail maker</h2>
+              <h2 class="heading-1 text-align-center">AI Thumbnail maker</h2>
               <p class="heading-description">Create your own thumbnail with AI</p>
             </div>
           </div>
@@ -31,7 +32,7 @@
               <input type="text" class="text-input" id="theme" required placeholder="E.g. a poster about paris or a Beatles album cover..." autocomplete="off">
             </div>
             <div class="form-group">
-              <label for="theme" class="form-label">Image style</label>
+              <label for="style" class="form-label">Image style</label>
               <select class="select-input" id="style" required>
                 <option value="Digital art, modern, clean" selected>Digital art</option>
                 <option value="impressionist">Impressionist</option>
@@ -54,12 +55,110 @@
             </div>
             <button type="submit" class="btn primary">Generate</button>
           </form>
-
-
         </div>
         <!--End main panel-->
+
+        <div class="panel" data-panel="designer">
+          <div class="designer-general">
+            <h2 class="heading-1">Edit</h2>
+            <div class="form-group">
+              <label for="font-family" class="form-label">Visibility</label>
+              <div class="checkbox-group">
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="title-visibility" checked>
+                  <label for="title" class="form-label">Title</label>
+                </div>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="paragraph-visibility" checked>
+                  <label for="Paragraph" class="form-label">Paragraph</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="font-family" class="form-label">Layout</label>
+              <div class="grid-container">
+                <div class="grid-cell" data-align="1"></div>
+                <div class="grid-cell" data-align="2"></div>
+                <div class="grid-cell" data-align="3"></div>
+                <div class="grid-cell" data-align="4"></div>
+                <div class="grid-cell" data-align="5"></div>
+                <div class="grid-cell" data-align="6"></div>
+                <div class="grid-cell" data-align="7"></div>
+                <div class="grid-cell" data-align="8"></div>
+                <div class="grid-cell" data-align="9"></div>
+              </div>
+            </div>           
+          </div>
+        </div>
+        <!--End designer panel-->
+
+        <div class="panel" data-panel="title-edit">
+          <div class="layer-edit">
+            <h2 class="heading-1">Edit title</h2>
+            <div class="form-group">
+              <label for="title-font-selector" class="form-label">Font family</label>
+              <select class="select-input" id="title-font-selector">
+                <option value="Poppins" style="font-family: 'Poppins', sans-serif">Poppins</option>
+                <option value="Lora" style="font-family: 'Lora', serif">Lora</option>
+                <option value="Open Sans" style="font-family: 'Open Sans', sans-serif">Open Sans</option>
+                <option value="Merriweather" style="font-family: 'Merriweather', serif">Merriweather</option>
+                <option value="Montserrat" style="font-family: 'Montserrat', sans-serif">Montserrat</option>
+                <option value="Raleway" style="font-family: 'Raleway', sans-serif">Raleway</option>
+                <option value="Playfair Display" style="font-family: 'Playfair Display', serif">Playfair Display</option>
+                <option value="Ubuntu" style="font-family: 'Ubuntu', sans-serif">Ubuntu</option>
+                <option value="Oswald" style="font-family: 'Oswald', sans-serif">Oswald</option>
+                <option value="Source Serif Pro" style="font-family: 'Source Serif Pro', serif">Source Serif Pro</option>
+                <option value="Quicksand" style="font-family: 'Quicksand', sans-serif">Quicksand</option>
+                <option value="Fira Sans" style="font-family: 'Fira Sans', sans-serif">Fira Sans</option>
+                <option value="Spectral" style="font-family: 'Spectral', serif">Spectral</option>
+                <option value="Roboto" style="font-family: 'Roboto', sans-serif">Roboto</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="font-family" class="form-label">Font styles</label>
+              <div class="checkbox-group">
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="turn-bold-title" checked>
+                  <label for="turn-bold">Bold</label>
+                </div>
+      
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="turn-italic-title">
+                  <label for="turn-italic">Italic</label>
+                </div>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="turn-uppercase-title">
+                  <label for="turn-uppercase">Uppercase</label>
+                </div>
+              </div>
+            </div>
+            <div class="slider-container">
+              <div class="value-display">Font size</div>
+              <div class="slider-box">
+                <span class="slider-value" id="title-font-size-value">72</span>
+                <input type="range" min="50" max="120" value="72" id="title-font-size-slider">
+              </div>
+            </div>
+            <button id="title-edit-done" class="btn primary">Done</button>         
+          </div>
+        </div>
       </div>
-      <div class="preview-area"></div>
+
+      <div class="preview-area">
+
+        <div id="output" class="output">
+          <div class="output-text">
+            <h1 id="output-title" class="output-title bold" contenteditable="true"></h1>
+            <p id="output-paragraph" class="output-paragraph" contenteditable="true"></p>
+          </div>
+          <div class="output-overlay" id="color-overlay"></div>
+          <img src="" alt="poster-image" id="output-image">
+          <div class="guide-line vertical-guide"></div>
+          <div class="guide-line horizontal-guide"></div>
+          <img id="output-element" class="output-element" alt="Drag the image here">
+        </div>
+
+      </div>
     </div>
     <script src="js/variables.js"></script>
     <script src="js/main.js"></script>

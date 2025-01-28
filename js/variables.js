@@ -57,5 +57,11 @@ const font = {
 };
 
 // Designer variables
-const fontFamilySelector = document.getElementById("font-family");
+const titleFontSelector = document.getElementById("title-font-selector");
 const designer = document.getElementById("designer");
+const titleEditDone = document.getElementById("title-edit-done");
+const elementEditDone = document.getElementById("element-edit-done");
+const titleFontSizeSlider= document.getElementById("title-font-size-slider");
+const titleFontSizeValue = document.getElementById("title-font-size-value");
+const titleLetterSpacingSlider= document.getElementById("title-letter-spacing-slider");
+const titleLetterSpacingValue = document.getElementById("title-letter-spacing-value");

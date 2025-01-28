@@ -1,10 +1,35 @@
+// panel-manager
+let panelState = "";
+
+function showPanel(panelId) {
+  document.querySelectorAll('.panel').forEach(panel => {
+      panel.dataset.active = "false";
+  });
+  
+  const targetPanel = document.querySelector(`.panel[data-panel="${panelId}"]`);
+  if (targetPanel) {
+      targetPanel.dataset.active = "true";
+  }
+  panelState = targetPanel.getAttribute('data-panel');
+}
+
+// Event listeners
+document.querySelectorAll('[data-target]').forEach(button => {
+  button.addEventListener('click', () => {
+      showPanel(button.dataset.target);
+  });
+});
+
+// Show initial panel
+showPanel('main');
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  document.getElementById("loading-msg").style.display = "block";
   output.classList.add("loading-state");
   document.querySelector('.output-text').style.display = "none";
   outputElement.style.display = "none";
+  showPanel('designer');
 
   //Reset output
   posterImage.style.display = "none";
@@ -15,22 +40,14 @@ form.addEventListener("submit", async (e) => {
   try {
 
     //Build prompt for text
-    switch (purposeInput.value) {
-      case "p1":
-        instructions.title = purpose[0].title + theme.value + stringFormat;
-        instructions.paragraph = purpose[0].paragraph + theme.value + stringFormat;
-        break;
-      case "p2":
-        instructions.title = purpose[1].title + theme.value + stringFormat;
-        instructions.paragraph = purpose[1].paragraph + theme.value + stringFormat;
-        break;
-    }
+    instructions.title = purpose[0].title + theme.value + stringFormat;
+    instructions.paragraph = purpose[0].paragraph + theme.value + stringFormat;
 
-if (imageDescriptionInput.value !== "") {
-    imageDescription = `The image should include: ${imageDescriptionInput.value}.`;
-}else{
-  imageDescription = "";
-}
+    if (imageDescriptionInput.value !== "") {
+        imageDescription = `The image should include: ${imageDescriptionInput.value}.`;
+    }else{
+      imageDescription = "";
+    }
 
     const response = await fetch(webhookUrl, {
       method: "POST",
@@ -61,78 +78,12 @@ if (imageDescriptionInput.value !== "") {
     title.innerHTML = data.title;
     paragraph.innerHTML = data.paragraph;
 
-    //Change typography
-    switch (style.value) {
-      case "Digital art, modern, clean":
-        output.style.fontFamily = font.Poppins;
-        fontFamilySelector.value = "Poppins";
-        break;
-      case "impressionist":
-        output.style.fontFamily = font.Lora;
-        fontFamilySelector.value = "Lora";
-        break;
-      case "expressionism":
-        output.style.fontFamily = font.Spectral;
-        fontFamilySelector.value = "Spectral";
-        break;
-      case "abstract":
-        output.style.fontFamily = font.Raleway;
-        fontFamilySelector.value = "Raleway";
-        break;
-      case "cubism":
-        output.style.fontFamily = font.Montserrat;
-        fontFamilySelector.value = "Montserrat";
-        break;
-      case "surrealism":
-        output.style.fontFamily = font.PlayfairDisplay;
-        fontFamilySelector.value = "Playfair Display";
-        break;
-      case "pop art":
-        output.style.fontFamily = font.Ubuntu;
-        fontFamilySelector.value = "Ubuntu";
-        break;
-      case "swiss international style":
-        output.style.fontFamily = font.OpenSans;
-        fontFamilySelector.value = "Open Sans";
-        break;
-      case "vintage travel advertisements mid-20th":
-        output.style.fontFamily = font.Merriweather;
-        fontFamilySelector.value = "Merriweather";
-        break;
-      case "bauhaus":
-        output.style.fontFamily = font.Roboto;
-        fontFamilySelector.value = "Roboto";
-        break;
-      default:
-        output.style.fontFamily = font.OpenSans;
-        fontFamilySelector.value = "Open Sans";
-        break;
-    }
-
-    switch (ratio.value) {
-      case "16:9":
-        output.style.width = "800px";
-        output.style.height = "450px";
-        break;
-      case "9:16":
-        output.style.width = "450px";
-        output.style.height = "800px";
-        break;
-      case "1:1":
-        output.style.width = "595px";
-        output.style.height = "595px";
-        break;
-    }
-
     // Error handling
   } catch (error) {
     console.error("Error:", error.message);
   } finally {
     form.classList.remove("loading");
-    document.getElementById("loading-msg").style.display = "none";
     output.classList.remove("loading-state");
-    form.style.pointerEvents = 'none';
-    designer.style.display = "flex";
     document.querySelector('.output-text').style.display = "flex";
     if(outputElement.src !== ""){
       outputElement.style.display = "block";
@@ -144,73 +95,82 @@ if (imageDescriptionInput.value !== "") {
 
 // Designer section
 
-const designerGeneral = document.getElementById("d-general");
-const designerPanelSecondary = document.getElementById("designer-panel-secondary");
-const designerTitle = document.getElementById("d-title");
-const designerElement = document.getElementById("d-element");
-const titleEditDone = document.getElementById("title-edit-done");
-const elementEditDone = document.getElementById("element-edit-done");
+title.addEventListener("focus", function () {
+  showPanel('title-edit');
+})
 
-fontFamilySelector.addEventListener("change", function () {
-  switch (fontFamilySelector.value) {
+titleEditDone.addEventListener("click", function () {
+  showPanel('designer');
+})
+
+function changeFont(targetLayer, fontSelector){
+  switch (fontSelector) {
     case "Poppins":
-      output.style.fontFamily = font.Poppins;
+      targetLayer.style.fontFamily = font.Poppins;
       break;
     case "Lora":
-      output.style.fontFamily = font.Lora;
+      targetLayer.style.fontFamily = font.Lora;
       break;
     case "Spectral":
-      output.style.fontFamily = font.Spectral;
+      targetLayer.style.fontFamily = font.Spectral;
       break;
     case "Raleway":
-      output.style.fontFamily = font.Raleway;
+      targetLayer.style.fontFamily = font.Raleway;
       break;
     case "Montserrat":
-      output.style.fontFamily = font.Montserrat;
+      targetLayer.style.fontFamily = font.Montserrat;
       break;
     case "PlayfairDisplay":
-      output.style.fontFamily = font.PlayfairDisplay;
+      targetLayer.style.fontFamily = font.PlayfairDisplay;
       break;
     case "Ubuntu":
-      output.style.fontFamily = font.Ubuntu;
+      targetLayer.style.fontFamily = font.Ubuntu;
       break;
     case "Open Sans":
-      output.style.fontFamily = font.OpenSans;
+      targetLayer.style.fontFamily = font.OpenSans;
       break;
     case "Merriweather":
-      output.style.fontFamily = font.Merriweather;
+      targetLayer.style.fontFamily = font.Merriweather;
       break;
     case "Roboto":
-      output.style.fontFamily = font.Roboto;
+      targetLayer.style.fontFamily = font.Roboto;
       break;
     default:
-      output.style.fontFamily = font.Poppins;
+      targetLayer.style.fontFamily = font.Poppins;
       break;
   }
+}
+
+// Update title font
+
+titleFontSelector.addEventListener("change", function () {
+changeFont(title,titleFontSelector.value);
 });
 
-const downloadButton = document.getElementById("download");
+// Update title styles
 
-downloadButton.addEventListener("click", () => {
-  html2canvas(output, { useCORS: true }).then((canvas) => {
-    // Convert the canvas to a data URL
-    const link = document.createElement("a");
-    link.download = "content.png"; // File name
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  });
-});
+document.getElementById("turn-bold-title").onchange = () => {
+  title.classList.toggle("bold");
+};
 
-const slider = document.getElementById("opacitySlider");
-const opacityValue = document.getElementById("opacityValue");
+document.getElementById("turn-italic-title").onchange = () => {
+  title.classList.toggle("italic");
+};
 
-slider.addEventListener("input", function () {
-  const value = this.value;
-  const opacity = value / 100;
+document.getElementById("turn-uppercase-title").onchange = () => {
+  title.classList.toggle("uppercase");
+};
 
-  colorOverlay.style.opacity = opacity;
-  opacityValue.textContent = value + "%";
-});
+// const slider = document.getElementById("opacitySlider");
+// const opacityValue = document.getElementById("opacityValue");
+
+// slider.addEventListener("input", function () {
+//   const value = this.value;
+//   const opacity = value / 100;
+
+//   colorOverlay.style.opacity = opacity;
+//   opacityValue.textContent = value + "%";
+// });
 
 // Layout selector
 
@@ -280,65 +240,9 @@ document.getElementById("paragraph-visibility").onchange = () => {
   paragraph.classList.toggle("visibility");
 };
 
-// Panel swap
 
- function slideLeft(panelHide,panelShow){
-  designerGeneral.classList.add('slide-left');
-  designerPanelSecondary.classList.add('slide-left');
-  panelHide.style.display = "none";
-  panelShow.style.display = "flex";  
-}
 
-function slideRight(){
-  designerGeneral.classList.remove('slide-left');
-  designerPanelSecondary.classList.remove('slide-left');
-}
-
-// Swap title
-title.addEventListener("focus", function () {
-slideLeft(designerElement,designerTitle);
-})
-
-colorOverlay.addEventListener("click", function () {
-slideRight();
-})
-
-titleEditDone.addEventListener("click", function () {
-slideRight();
-})
-
-// Swap element
-
-outputElement.addEventListener("click", function () {
-slideLeft(designerTitle,designerElement);
-})
-
-colorOverlay.addEventListener("click", function () {
-slideRight();
-})
-
-elementEditDone.addEventListener("click", function () {
-slideRight();
-})
-
-// Update title styles
-
-document.getElementById("turn-bold").onchange = () => {
-  title.classList.toggle("bold");
-};
-
-document.getElementById("turn-italic").onchange = () => {
-  title.classList.toggle("italic");
-};
-
-document.getElementById("turn-uppercase").onchange = () => {
-  title.classList.toggle("uppercase");
-};
-
-// Title sliders
-
-const titleFontSizeSlider= document.getElementById("title-font-size-slider");
-const titleFontSizeValue = document.getElementById("title-font-size-value");
+//Title font size
 
 titleFontSizeSlider.addEventListener("input", function () {
   const value = this.value;
@@ -348,16 +252,13 @@ titleFontSizeSlider.addEventListener("input", function () {
   titleFontSizeValue.textContent = size;
 });
 
-const titleLetterSpacingSlider= document.getElementById("title-letter-spacing-slider");
-const titleLetterSpacingValue = document.getElementById("title-letter-spacing-value");
+// titleLetterSpacingSlider.addEventListener("input", function () {
+//   const value = this.value;
+//   const size = value + "px";
 
-titleLetterSpacingSlider.addEventListener("input", function () {
-  const value = this.value;
-  const size = value + "px";
-
-  title.style.letterSpacing = size;
-  titleLetterSpacingValue.textContent = size;
-});
+//   title.style.letterSpacing = size;
+//   titleLetterSpacingValue.textContent = size;
+// });
 
 
 // Element scale slider

@@ -180,6 +180,29 @@ input[type="checkbox"] {
   display: none;
 }
 
+.color-picker {
+  appearance: none; /* Remove the default browser styling */
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%; /* Make it circular */
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  background: none;
+}
+
+/* Add a custom border */
+.color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 50%;
+}
+
+.color-picker::-webkit-color-swatch {
+  border: 2px solid #ccc; /* Custom border */
+  border-radius: 50%;
+}
+
 /* ---------------------------- layout selector ---------------------------- */
 
 .grid-container {

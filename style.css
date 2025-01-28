@@ -126,7 +126,7 @@ margin: 0;
 
 .btn {
   border: none;
-  border-radius: 20px;
+  border-radius: 28px;
   padding: 12px 24px;
   font-size: 1rem; font-weight: 700;
   color: var(--primary-contrastText);
@@ -134,7 +134,23 @@ margin: 0;
   text-align: center; box-sizing:border-box;
   display: block;
   line-height: auto;
+}
+
+.primary{
   background-color: var(--primary-main);
+}
+
+.primary:hover{
+  background-color: var(--primary-dark);  
+}
+
+.secondary{
+  background-color: var(--tone8);
+  border: 1px solid var(--tone4);
+}
+
+.secondary:hover{
+  background-color: var(--tone7);
 }
 
 .preview-area{
@@ -334,43 +350,48 @@ font-family: "Roboto", helvetica, sans-serif;
   }
 }
 
+/* Sticker */
 
-/* Element */
-
-.image-input{
+.image-input {
   display: none;
 }
 
-    .output-element {
-      max-width: none;
-      position: absolute; z-index:3;
-      top: 0;
-      left: 0;
-      cursor: grab;
-      display: none;
-      width: 200px;
-      transition: transform 0.2s ease;
-    }
-    .output-element:active {
-      cursor: grabbing;
-    }
-    .guide-line {
-      position: absolute;
-      background-color: #fff; opacity:1;
-      z-index: 1;
-      display: none;
-    }
-    .vertical-guide {
-      width: 1px;
-      height: 100%;
-      left: 50%;
-      top: 0;
-      transform: translateX(-50%);
-    }
-    .horizontal-guide {
-      height: 1px;
-      width: 100%;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-    }
+.output-sticker {
+  max-width: none;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  cursor: grab;
+  width: 200px;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.output-sticker:active {
+  cursor: grabbing;
+}
+
+.guide-line {
+  position: absolute;
+  background-color: #fff;
+  opacity: 1;
+  z-index: 1;
+  display: none;
+}
+
+.vertical-guide {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.horizontal-guide {
+  height: 1px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}

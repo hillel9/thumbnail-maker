@@ -3,12 +3,12 @@ let panelState = "";
 
 function showPanel(panelId) {
   document.querySelectorAll('.panel').forEach(panel => {
-      panel.dataset.active = "false";
+    panel.dataset.active = "false";
   });
-  
+
   const targetPanel = document.querySelector(`.panel[data-panel="${panelId}"]`);
   if (targetPanel) {
-      targetPanel.dataset.active = "true";
+    targetPanel.dataset.active = "true";
   }
   panelState = targetPanel.getAttribute('data-panel');
 }
@@ -16,7 +16,7 @@ function showPanel(panelId) {
 // Event listeners
 document.querySelectorAll('[data-target]').forEach(button => {
   button.addEventListener('click', () => {
-      showPanel(button.dataset.target);
+    showPanel(button.dataset.target);
   });
 });
 
@@ -28,14 +28,13 @@ form.addEventListener("submit", async (e) => {
 
   output.classList.add("loading-state");
   document.querySelector('.output-text').style.display = "none";
-  outputElement.style.display = "none";
 
   //Reset output
   posterImage.style.display = "none";
   colorOverlay.style.backgroundColor = "00FFFFFF";
   title.innerHTML = "";
-  paragraph.innerHTML = "";  
-  
+  paragraph.innerHTML = "";
+
   try {
 
     //Build prompt for text
@@ -43,8 +42,8 @@ form.addEventListener("submit", async (e) => {
     instructions.paragraph = purpose[0].paragraph + theme.value + stringFormat;
 
     if (imageDescriptionInput.value !== "") {
-        imageDescription = `The image should include: ${imageDescriptionInput.value}.`;
-    }else{
+      imageDescription = `The image should include: ${imageDescriptionInput.value}.`;
+    } else {
       imageDescription = "";
     }
 
@@ -86,9 +85,6 @@ form.addEventListener("submit", async (e) => {
     output.classList.remove("loading-state");
     document.querySelector('.output-text').style.display = "flex";
     showPanel('designer');
-    if(outputElement.src !== ""){
-      outputElement.style.display = "block";
-    }
   }
 });
 
@@ -112,11 +108,15 @@ paragraphEditDone.addEventListener("click", function () {
   showPanel('designer');
 })
 
+stickerEditDone.addEventListener("click", function () {
+  showPanel('designer');
+})
+
 colorOverlay.addEventListener("click", function () {
   showPanel('designer');
 })
 
-function changeFont(targetLayer, fontSelector){
+function changeFont(targetLayer, fontSelector) {
   switch (fontSelector) {
     case "Poppins":
       targetLayer.style.fontFamily = font.Poppins;
@@ -157,7 +157,7 @@ function changeFont(targetLayer, fontSelector){
 // Update title font
 
 titleFontSelector.addEventListener("change", function () {
-changeFont(title,titleFontSelector.value);
+  changeFont(title, titleFontSelector.value);
 });
 
 // Update paragraph font
@@ -278,8 +278,6 @@ document.getElementById("paragraph-visibility").onchange = () => {
   paragraph.classList.toggle("visibility");
 };
 
-
-
 //Title font size
 
 titleFontSizeSlider.addEventListener("input", function () {
@@ -311,136 +309,167 @@ titleLetterSpacingSlider.addEventListener("input", function () {
 });
 
 
-// Element scale slider
-// const elementScaleSlider= document.getElementById("element-scale-slider");
-// const elementScaleValue = document.getElementById("element-scale-value");
+// Sticker scale slider
+const elementScaleSlider= document.getElementById("element-scale-slider");
+const elementScaleValue = document.getElementById("element-scale-value");
 
-// elementScaleSlider.addEventListener("input", function () {
-//   const value = this.value;
+elementScaleSlider.addEventListener("input", function () {
+  const value = this.value;
 
-//   outputElement.style.transform = `scale(${value})`;
-//   elementScaleValue.textContent = value;
-// });
-
-
-
-/* ------------------------------------------- */
+  activeSticker.style.transform = `scale(${value})`;
+  elementScaleValue.textContent = value;
+});
 
 
 const imageInput = document.getElementById('image-input');
 const verticalGuide = document.querySelector('.vertical-guide');
 const horizontalGuide = document.querySelector('.horizontal-guide');
+let stickerIndex = 0;
+let activeSticker = "";
 
-let isDragging = false;
-let startX, startY, imageStartX, imageStartY;
+// Store dragging state for each sticker
+const dragStates = new Map();
 
 // Handle image upload
 imageInput.addEventListener('change', (event) => {
-const file = event.target.files[0];
+  const file = event.target.files[0];
 
-      if (file) {
-        const reader = new FileReader();
+  if (file) {
+    const reader = new FileReader();
 
-        reader.onload = function (e) {
-          outputElement.src = e.target.result;
-          outputElement.style.display = 'block';
-          snapToCenter(); // Snap to center when the image is uploaded
-        };
+    reader.onload = function (e) {
+      const sticker = document.createElement('img');
+      sticker.id = 'output-sticker-'+stickerIndex;
+      sticker.className = 'output-sticker';
+      sticker.alt = 'Drag the image here';
+      sticker.src = e.target.result;
+      output.appendChild(sticker);
+      currentSticker = document.getElementById(sticker.id);
+      sticker.onload = function() {
+        snapToCenter(currentSticker);
+      };
+      allFeatures(currentSticker);
+      stickerIndex++;
+    };
 
-        reader.readAsDataURL(file);
-      } else {
-        outputElement.style.display = 'none';
-        outputElement.src = '';
-      }
-    });
+    reader.readAsDataURL(file);
+  } else {
+    outputElement.style.display = 'none';
+    outputElement.src = '';
+  }
+});
 
-    // Snap the image to the center
-    function snapToCenter() {
-      const centerX = (output.offsetWidth - outputElement.offsetWidth) / 2;
-      const centerY = (output.offsetHeight - outputElement.offsetHeight) / 2;
-      outputElement.style.left = `${centerX}px`;
-      outputElement.style.top = `${centerY}px`;
+// Snap the image to the center
+function snapToCenter(target) {
+  const centerX = (output.offsetWidth - target.offsetWidth) / 2;
+  const centerY = (output.offsetHeight - target.offsetHeight) / 2;
+ 
+  target.style.left = `${centerX}px`;
+  target.style.top = `${centerY}px`;
 
-      showGuideLines();
-    }
+  showGuideLines();
+}
 
-    // Show guide lines
-    function showGuideLines() {
+// Show guide lines
+function showGuideLines() {
+  verticalGuide.style.display = 'block';
+  horizontalGuide.style.display = 'block';
+
+  setTimeout(() => {
+    verticalGuide.style.display = 'none';
+    horizontalGuide.style.display = 'none';
+  }, 1000);
+}
+
+function allFeatures(sticker) {
+
+  // Add click event listener to the sticker
+  sticker.addEventListener('click', () => {
+    showPanel('sticker');
+    activeSticker = sticker;
+  });
+
+
+  // Initialize drag state for this sticker
+  dragStates.set(sticker.id, {
+    isDragging: false,
+    startX: 0,
+    startY: 0,
+    imageStartX: 0,
+    imageStartY: 0
+  });
+
+  // Start dragging
+  sticker.addEventListener('mousedown', (event) => {
+    const dragState = dragStates.get(sticker.id);
+    dragState.isDragging = true;
+    dragState.startX = event.clientX;
+    dragState.startY = event.clientY;
+
+    // Calculate the image's starting position relative to the container
+    const rect = sticker.getBoundingClientRect();
+    const containerRect = output.getBoundingClientRect();
+    dragState.imageStartX = rect.left - containerRect.left;
+    dragState.imageStartY = rect.top - containerRect.top;
+
+    sticker.style.cursor = 'grabbing';
+    event.preventDefault();
+  });
+
+  // Dragging movement - specific to this sticker
+  const moveHandler = (event) => {
+    const dragState = dragStates.get(sticker.id);
+    if (!dragState.isDragging) return;
+
+    const containerRect = output.getBoundingClientRect();
+
+    // Calculate the new position based on mouse movement
+    let newLeft = dragState.imageStartX + (event.clientX - dragState.startX);
+    let newTop = dragState.imageStartY + (event.clientY - dragState.startY);
+
+    // Constrain the image within the container
+    const maxLeft = containerRect.width - sticker.offsetWidth;
+    const maxTop = containerRect.height - sticker.offsetHeight;
+
+    newLeft = Math.max(0, Math.min(newLeft, maxLeft));
+    newTop = Math.max(0, Math.min(newTop, maxTop));
+
+    // Apply the new position
+    sticker.style.left = `${newLeft}px`;
+    sticker.style.top = `${newTop}px`;
+
+    // Snap to horizontal or vertical center
+    const snapTolerance = 20;
+    const centerX = (containerRect.width - sticker.offsetWidth) / 2;
+    const centerY = (containerRect.height - sticker.offsetHeight) / 2;
+
+    if (Math.abs(newLeft - centerX) < snapTolerance) {
+      sticker.style.left = `${centerX}px`;
       verticalGuide.style.display = 'block';
-      horizontalGuide.style.display = 'block';
-
-      setTimeout(() => {
-        verticalGuide.style.display = 'none';
-        horizontalGuide.style.display = 'none';
-      }, 1000);
+    } else {
+      verticalGuide.style.display = 'none';
     }
 
-    // Start dragging
-    outputElement.addEventListener('mousedown', (event) => {
-      isDragging = true;
+    if (Math.abs(newTop - centerY) < snapTolerance) {
+      sticker.style.top = `${centerY}px`;
+      horizontalGuide.style.display = 'block';
+    } else {
+      horizontalGuide.style.display = 'none';
+    }
+  };
 
-      startX = event.clientX;
-      startY = event.clientY;
+  // Stop dragging - specific to this sticker
+  const upHandler = () => {
+    const dragState = dragStates.get(sticker.id);
+    if (dragState.isDragging) {
+      dragState.isDragging = false;
+      sticker.style.cursor = 'grab';
+      verticalGuide.style.display = 'none';
+      horizontalGuide.style.display = 'none';
+    }
+  };
 
-      // Calculate the image's starting position relative to the container
-      const rect = outputElement.getBoundingClientRect();
-      const containerRect = output.getBoundingClientRect();
-      imageStartX = rect.left - containerRect.left;
-      imageStartY = rect.top - containerRect.top;
-
-      outputElement.style.cursor = 'grabbing';
-
-      // Prevent text selection during dragging
-      event.preventDefault();
-    });
-
-    // Dragging movement
-    document.addEventListener('mousemove', (event) => {
-      if (!isDragging) return;
-
-      const containerRect = output.getBoundingClientRect();
-
-      // Calculate the new position based on mouse movement
-      let newLeft = imageStartX + (event.clientX - startX);
-      let newTop = imageStartY + (event.clientY - startY);
-
-      // Constrain the image within the container
-      const maxLeft = containerRect.width - outputElement.offsetWidth;
-      const maxTop = containerRect.height - outputElement.offsetHeight;
-
-      newLeft = Math.max(0, Math.min(newLeft, maxLeft));
-      newTop = Math.max(0, Math.min(newTop, maxTop));
-
-      // Apply the new position
-      outputElement.style.left = `${newLeft}px`;
-      outputElement.style.top = `${newTop}px`;
-
-      // Snap to horizontal or vertical center
-      const snapTolerance = 20; // Distance to snap
-      const centerX = (containerRect.width - outputElement.offsetWidth) / 2;
-      const centerY = (containerRect.height - outputElement.offsetHeight) / 2;
-
-      if (Math.abs(newLeft - centerX) < snapTolerance) {
-        outputElement.style.left = `${centerX}px`;
-        verticalGuide.style.display = 'block';
-      } else {
-        verticalGuide.style.display = 'none';
-      }
-
-      if (Math.abs(newTop - centerY) < snapTolerance) {
-        outputElement.style.top = `${centerY}px`;
-        horizontalGuide.style.display = 'block';
-      } else {
-        horizontalGuide.style.display = 'none';
-      }
-    });
-
-    // Stop dragging
-    document.addEventListener('mouseup', () => {
-      if (isDragging) {
-        isDragging = false;
-        outputElement.style.cursor = 'grab';
-        verticalGuide.style.display = 'none';
-        horizontalGuide.style.display = 'none';
-      }
-    });
+  // Add event listeners
+  document.addEventListener('mousemove', moveHandler);
+  document.addEventListener('mouseup', upHandler);
+}

@@ -60,7 +60,7 @@ const font = {
 
 const designer = document.getElementById("designer");
 const colorOverlaySelector = document.getElementById("color-overlay-selector");
-const elementEditDone = document.getElementById("element-edit-done");
+const stickerEditDone = document.getElementById("sticker-edit-done");
 const titleEditDone = document.getElementById("title-edit-done");
 const titleFontSizeSlider= document.getElementById("title-font-size-slider");
 const titleFontSizeValue = document.getElementById("title-font-size-value");

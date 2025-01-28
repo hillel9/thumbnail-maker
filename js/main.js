@@ -29,7 +29,6 @@ form.addEventListener("submit", async (e) => {
   output.classList.add("loading-state");
   document.querySelector('.output-text').style.display = "none";
   outputElement.style.display = "none";
-  showPanel('designer');
 
   //Reset output
   posterImage.style.display = "none";
@@ -75,6 +74,7 @@ form.addEventListener("submit", async (e) => {
     posterImage.src = data.imageUrl;
     posterImage.style.display = "block";
     colorOverlay.style.backgroundColor = data.color;
+    colorOverlaySelector.value = data.color;
     title.innerHTML = data.title;
     paragraph.innerHTML = data.paragraph;
 
@@ -85,6 +85,7 @@ form.addEventListener("submit", async (e) => {
     form.classList.remove("loading");
     output.classList.remove("loading-state");
     document.querySelector('.output-text').style.display = "flex";
+    showPanel('designer');
     if(outputElement.src !== ""){
       outputElement.style.display = "block";
     }
@@ -191,6 +192,10 @@ document.getElementById("turn-italic-paragraph").onchange = () => {
 
 document.getElementById("turn-uppercase-paragraph").onchange = () => {
   paragraph.classList.toggle("uppercase");
+};
+
+colorOverlaySelector.onchange = () => {
+  colorOverlay.style.backgroundColor = colorOverlaySelector.value;
 };
 
 // Color opacity slider

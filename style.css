@@ -8,6 +8,14 @@ body {
   height: 100vh;
 }
 
+.top-bar{
+  display: flex; flex-direction: row; gap:8px; align-items: center; height: 52px; border-bottom: 1px solid var(--tone5); justify-content: center;
+}
+
+.top-bar h1{
+  margin: 0; padding: 0; color: var(--tone1); font-weight: 700; font-size: 18px;
+}
+
 .wrapper{
   display: flex;
   flex-direction: row;
@@ -228,6 +236,10 @@ input[type="checkbox"] {
   font-size: 0.875rem;
   font-weight: 500;
   margin-bottom: 12px;
+}
+
+.slider-holder{
+  display: flex; flex-direction: row; align-items: center; gap: 8px;
 }
 
 

@@ -168,7 +168,7 @@ margin: 0;
 .secondary{
   background-color: var(--tone8);
   border: 1px solid var(--tone4);
-
+  color: var(--tone1);
 }
 
 .secondary svg{

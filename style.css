@@ -416,13 +416,13 @@ font-family: "Roboto", helvetica, sans-serif;
 
 @keyframes skeletonBreathing {
   0% {
-    background-color: var(--tone7);
+    background-color: var(--tone6);
   }
   50% {
     background-color: var(--tone5);
   }
   100% {
-    background-color: var(--tone7);
+    background-color: var(--tone6);
   }
 }
 

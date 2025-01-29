@@ -289,12 +289,16 @@ cells.forEach((cell, index) => {
   });
 });
 
-document.getElementById("title-visibility").onchange = () => {
+document.getElementById("title-visibility").onclick = () => {
   title.classList.toggle("visibility");
+  document.querySelector('#title-visibility .visible-on').classList.toggle('hide');
+  document.querySelector('#title-visibility .visible-off').classList.toggle('hide');
 };
 
-document.getElementById("paragraph-visibility").onchange = () => {
+document.getElementById("paragraph-visibility").onclick = () => {
   paragraph.classList.toggle("visibility");
+  document.querySelector('#paragraph-visibility .visible-on').classList.toggle('hide');
+  document.querySelector('#paragraph-visibility .visible-off').classList.toggle('hide');
 };
 
 //Title font size

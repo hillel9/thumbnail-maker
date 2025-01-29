@@ -13,3 +13,7 @@ h1{
 .uppercase{
     text-transform: uppercase;
 }
+
+.hide{
+    display: none;
+}

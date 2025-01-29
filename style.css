@@ -150,6 +150,10 @@ margin: 0;
   color: var(--tone1);
 }
 
+.borderless svg{
+  fill: var(--tone1);
+}
+
 .borderless:hover{
   background-color: var(--tone7);
 }  

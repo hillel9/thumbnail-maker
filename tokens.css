@@ -14,17 +14,17 @@
     --translucent-commonWhite: #FFFFFF;
   
     /* Tones */
-    --tone1: #333333;
-    --tone2: #707070;
-    --tone3: #878787;
-    --tone4: #BDBDBD;
-    --tone5: #D9D9D9;
-    --tone6: #EBEBEB;
-    --tone7: #F5F5F5;
-    --tone8: #FFFFFF;
-    --surface-background: #ffffff;
-    --surface-paper: #F5F5F5;
-    --surface-elevated: #ffffff;
+    --tone1: #ffffff;
+    --tone2: #cccccc;
+    --tone3: #999999;
+    --tone4: #666666;
+    --tone5: #525252;
+    --tone6: #383838;
+    --tone7: #212121;
+    --tone8: #121212;
+    --surface-background: #121212;
+    --surface-paper: #242424;
+    --surface-elevated: #333333;
     --surface-protection: #3D3D3D;
   
     /* Danger Colors */

@@ -289,6 +289,8 @@ cells.forEach((cell, index) => {
   });
 });
 
+// Toggle visibility
+
 document.getElementById("title-visibility").onclick = () => {
   title.classList.toggle("visibility");
   document.querySelector('#title-visibility .visible-on').classList.toggle('hide');

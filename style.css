@@ -38,6 +38,7 @@ body {
 
 .preview-area{
   flex-grow: 1;
+  background-color: var(--tone7);
 }
 
 .heading{
@@ -472,24 +473,7 @@ font-family: "Roboto", helvetica, sans-serif;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--tone1);
-}
+/* Toggle Visibility */
 
 .visibility-list {
   list-style: none;

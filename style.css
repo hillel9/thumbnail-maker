@@ -70,6 +70,10 @@ margin: 0;
   display: flex; align-items: center; flex-direction: column; gap: 8px;
 }
 
+.inner-header{
+  display: flex; flex-direction: row; gap: 8px; align-items: center;
+}
+
 /* ---------------------------- form ---------------------------- */
 
 .webhook-form{
@@ -136,6 +140,19 @@ margin: 0;
   line-height: auto;
 }
 
+.small{
+  padding: 4px 8px;
+}
+
+.borderless{
+  border: none;
+  background:transparent;
+}
+
+.borderless:hover{
+  background-color: var(--tone7);
+}  
+
 .primary{
   background-color: var(--primary-main);
 }
@@ -147,6 +164,10 @@ margin: 0;
 .secondary{
   background-color: var(--tone8);
   border: 1px solid var(--tone4);
+}
+
+.btn svg{
+  fill: var(--tone1);
 }
 
 .secondary:hover{

@@ -116,6 +116,10 @@ colorOverlay.addEventListener("click", function () {
   showPanel('designer');
 })
 
+backToMain.addEventListener("click", function () {
+  showPanel('main');
+})
+
 function changeFont(targetLayer, fontSelector) {
   switch (fontSelector) {
     case "Poppins":

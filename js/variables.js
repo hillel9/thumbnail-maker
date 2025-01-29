@@ -59,6 +59,7 @@ const font = {
 // Designer variables
 
 const designer = document.getElementById("designer");
+const backToMain = document.getElementById("back-to-main");
 const colorOverlaySelector = document.getElementById("color-overlay-selector");
 const stickerEditDone = document.getElementById("sticker-edit-done");
 const titleEditDone = document.getElementById("title-edit-done");

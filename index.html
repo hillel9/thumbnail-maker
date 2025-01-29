@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <div class="top-bar">
       <img src="img/thumbnail-maker-icon.svg" alt="thumbnail">
-      <h1>Thumbnail Maker</h1>
+      <h1>AI Thumbnail Maker</h1>
     </div>
     <div class="wrapper">
       <div class="sidebar">
@@ -29,7 +29,7 @@
           <form id="webhookForm" class="webhook-form">
             <div class="form-group">
               <label for="theme" class="form-label">Theme of your poster</label>
-              <input type="text" class="text-input" id="theme" required placeholder="E.g. a poster about paris or a Beatles album cover..." autocomplete="off">
+              <input type="text" class="text-input" id="theme" required placeholder="E.g. thumbnail about generative ai tools" autocomplete="off">
             </div>
             <div class="form-group">
               <label for="style" class="form-label">Image style</label>
@@ -50,6 +50,14 @@
               </select>
             </div>
             <div class="form-group">
+              <label for="ratio" class="form-label">Ratio</label>
+              <select class="select-input" id="ratio" required>
+                <option value="16:9" selected>16:9</option>
+                <option value="9:16">9:16</option>
+                <option value="1:1">1:1</option>
+              </select>
+            </div>       
+            <div class="form-group">
               <label for="image-description" class="form-label">Additional image description (Optional)</label>
               <input type="text" class="text-input" id="image-description" placeholder="Write here what your image should include..." autocomplete="off">
             </div>
@@ -67,6 +75,17 @@
                 </button>
               <h2 class="heading-1">Edit thumbnail</h2>
             </div>
+            <div class="form-group">
+              <label for="font-family" class="form-label">Template</label>
+              <div class="template-list">
+                <div class="template-item current-template">
+                  <img src="img/template_preview_1.png" alt="template">
+                </div>
+                <div class="template-item">
+                  <span>Coming soon</span>
+                </div>               
+              </div>
+            </div>           
             <div class="slider-container">
               <div class="form-label">Color overlay</div>
               <div class="slider-holder">
@@ -106,7 +125,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="input-label">Add a sticker</label>
+              <label class="input-label">Add stickers</label>
               <label for="image-input" class="btn secondary">Upload image</label>
               <input type="file" id="image-input" accept="image/*" class="image-input">
             </div>        

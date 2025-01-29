@@ -224,6 +224,27 @@ input[type="checkbox"] {
   border-radius: 50%;
 }
 
+.template-list{
+  display: flex; flex-direction: row; gap: 8px;
+}
+
+.template-item{
+  width: 160px; height: 90px; box-sizing: border-box;
+  background-color: var(--tone7);
+  border-radius: 4px; overflow: hidden;
+  display: flex; flex-direction: row; align-items: center; justify-content: center;
+  color: var(--tone1); font-size: 16px;
+}
+
+.template-item img{
+  width: 100%;
+}
+
+.current-template{
+border: 2px solid var(--primary-main);
+}
+
+
 /* ---------------------------- layout selector ---------------------------- */
 
 .grid-container {

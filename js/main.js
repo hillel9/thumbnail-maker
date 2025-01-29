@@ -57,7 +57,7 @@ form.addEventListener("submit", async (e) => {
         title: instructions.title,
         paragraph: instructions.paragraph,
         style: style.value,
-        ratio: ratio,
+        ratio: ratio.value,
         imagedescription: imageDescription
       })
     });
@@ -68,6 +68,21 @@ form.addEventListener("submit", async (e) => {
 
     const data = await response.json();
     console.log(data);
+
+    switch (ratio.value) {
+      case "16:9":
+        output.style.width = "800px";
+        output.style.height = "450px";
+        break;
+      case "9:16":
+        output.style.width = "450px";
+        output.style.height = "800px";
+        break;
+      case "1:1":
+        output.style.width = "600px";
+        output.style.height = "600px";
+        break;
+    }
 
     //Populate output
     posterImage.src = data.imageUrl;

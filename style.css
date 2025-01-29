@@ -147,6 +147,7 @@ margin: 0;
 .borderless{
   border: none;
   background:transparent;
+  color: var(--tone1);
 }
 
 .borderless:hover{

@@ -334,7 +334,6 @@ const elementScaleValue = document.getElementById("element-scale-value");
 
 elementScaleSlider.addEventListener("input", function () {
   const value = this.value;
-
   activeSticker.style.transform = `scale(${value})`;
   elementScaleValue.textContent = value;
 });

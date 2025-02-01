@@ -1,6 +1,6 @@
 async function generateThumbnail(){
     output.classList.add("loading-state");
-    document.querySelector('.output-text').style.display = "none";
+    output.style.display = "flex";
   
     //Reset output
     outputImage.style.display = "none";

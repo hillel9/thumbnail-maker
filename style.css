@@ -86,11 +86,18 @@ margin: 0;
   padding: 24px;
   display: flex; flex-direction: column; gap:24px;
 }
+
+.link-looking{
+  display: none;
+  color: var(--primary-main); font-weight: 700; font-size: 14px;
+  cursor: pointer;
+}
+
 .form-group{
   display: flex; flex-direction: column; gap:12px;
 }
 
-.text-input{
+.text-input, .textarea-input{
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--tone4);
@@ -98,11 +105,16 @@ margin: 0;
   box-sizing: border-box;
   background-color: var(--tone8);
   color: var(--tone1);
-  font-size: 1rem;
-  transition: all 0.2s ease;
+  font-size: 14px; font-family: inherit;
 }
 
-.text-input:focus {
+.textarea-input{
+  resize: vertical;
+  overflow-y: auto;
+  min-height: 80px;
+}
+
+.text-input:focus, .textarea-input:focus {
   outline: none;
   border: 1px solid var(--primary-main);
 }
@@ -346,7 +358,7 @@ border: 2px solid var(--primary-main);
 width: 800px; height: 450px;
 aspect-ratio: 16 / 9;
 padding: 24px;
-display: flex;
+display: none;
 flex-direction: row; align-items: flex-end;
 position: relative;
 overflow: hidden;

@@ -23,6 +23,8 @@ document.querySelectorAll('[data-target]').forEach(button => {
 // Show initial panel
 showPanel('main');
 
+// Send request
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   generateThumbnail();
@@ -31,6 +33,16 @@ form.addEventListener("submit", async (e) => {
 regenerateButton.addEventListener("click", async (e) => {
   generateThumbnail();
 });
+
+// Describe image
+
+theme.onchange = ()=>{
+  document.getElementById('help-describe-image').style.display = "block";
+}
+
+document.getElementById('help-describe-image').onclick = ()=>{
+describeImage();
+}
 
 //------------------------ Designer section ------------------------
 

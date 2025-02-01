@@ -8,22 +8,23 @@ const ratio = document.getElementById("ratio");
 const imageDescriptionInput = document.getElementById("image-description");
 const theme = document.getElementById("theme");
 const purposeInput = document.getElementById("purpose");
+const regenerateButton = document.getElementById("regenerate");
 
 //Prompt variables
 const purpose = [
   {
-    title: "Write me a title in 2 words that reflecting this topic : ",
-    paragraph: "Write a strong statement of max 80 char about "
+    title: "Write me a catchy clickbait video title of max 40 char about ",
+    subtitle: "Write me an eyebrow title in 1 or 2 words that reflecting this topic : "
   },
   {
-    title: "Write me a catchy clickbait video title of max 50 char about ",
-    paragraph: "Write a viral video description in max 100 char about "
+    title: "",
+    subtitle: ""
   }
 ];
 
 const instructions = {
   title: "",
-  paragraph: ""
+  subtitle: ""
 };
 
 let imageDescription = "";
@@ -33,10 +34,11 @@ const stringFormat =
 
 //output variables
 const output = document.getElementById("output");
-const title = document.getElementById("output-title");
-const posterImage = document.getElementById("output-image");
+const outputImage = document.getElementById("output-image");
 const colorOverlay = document.getElementById("color-overlay");
-const paragraph = document.getElementById("output-paragraph");
+const outputText = document.getElementById("output-text");
+const outputSubtitle = document.getElementById("output-subtitle");
+const outputTitle = document.getElementById("output-title");
 const outputElement = document.getElementById('output-element');
 
 const font = {
@@ -62,17 +64,21 @@ const designer = document.getElementById("designer");
 const backToMain = document.getElementById("back-to-main");
 const colorOverlaySelector = document.getElementById("color-overlay-selector");
 const stickerEditDone = document.getElementById("sticker-edit-done");
+
+//Title
 const titleEditDone = document.getElementById("title-edit-done");
+
 const titleFontSizeSlider= document.getElementById("title-font-size-slider");
 const titleFontSizeValue = document.getElementById("title-font-size-value");
 const titleLetterSpacingSlider= document.getElementById("title-letter-spacing-slider");
 const titleLetterSpacingValue = document.getElementById("title-letter-spacing-value");
 const titleFontSelector = document.getElementById("title-font-selector");
 
+//Subtitle
+const subtitleEditDone = document.getElementById("subtitle-edit-done");
 
-const paragraphEditDone = document.getElementById("paragraph-edit-done");
-const paragraphFontSizeSlider = document.getElementById("paragraph-font-size-slider");
-const paragraphFontSizeValue = document.getElementById("paragraph-font-size-value");
-const paragraphLetterSpacingSlider = document.getElementById("paragraph-letter-spacing-slider");
-const paragraphLetterSpacingValue = document.getElementById("paragraph-letter-spacing-value");
-const paragraphFontSelector = document.getElementById("paragraph-font-selector");
+const subtitleFontSizeSlider = document.getElementById("subtitle-font-size-slider");
+const subtitleFontSizeValue = document.getElementById("subtitle-font-size-value");
+const subtitleLetterSpacingSlider = document.getElementById("subtitle-letter-spacing-slider");
+const subtitleLetterSpacingValue = document.getElementById("subtitle-letter-spacing-value");
+const subtitleFontSelector = document.getElementById("subtitle-font-selector");

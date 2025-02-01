@@ -132,8 +132,8 @@
                   </button>
                 </li>
                 <li class="visibility-item">
-                  <span class="visibility-label">Paragraph</span>
-                  <button id="paragraph-visibility">
+                  <span class="visibility-label">Subtitle</span>
+                  <button id="subtitle-visibility">
                     <div class="visible-on">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12 5C16.5455 5 20.4273 7.61 22 12C20.4273 16.39 16.5455 19 12 19C7.45455 19 3.57273 16.39 2 12C3.57273 7.61 7.45455 5 12 5ZM12 7C9.24444 7 7 9.24444 7 12C7 14.7556 9.24444 17 12 17C14.7556 17 17 14.7556 17 12C17 9.24444 14.7556 7 12 7ZM15 12C15 10.3467 13.6533 9 12 9C10.3467 9 9 10.3467 9 12C9 13.6533 10.3467 15 12 15C13.6533 15 15 13.6533 15 12Z"/>
@@ -214,15 +214,15 @@
             <div class="slider-container">
               <div class="form-label">Font size</div>
               <div class="slider-box">
-                <span class="slider-value" id="title-font-size-value">72</span>
-                <input type="range" min="16" max="120" value="72" id="title-font-size-slider">
+                <span class="slider-value" id="title-font-size-value">64</span>
+                <input type="range" min="16" max="120" value="64" id="title-font-size-slider">
               </div>
             </div>
             <div class="slider-container">
               <div class="form-label">Letter spacing</div>
               <div class="slider-box">
                 <span class="slider-value" id="title-letter-spacing-value">0</span>
-                <input type="range" min="-4" max="4" value="0" id="title-letter-spacing-slider">
+                <input type="range" min="-8" max="8" value="0" id="title-letter-spacing-slider">
               </div>
             </div>
             <button id="title-edit-done" class="btn primary">Done</button>         
@@ -230,12 +230,12 @@
         </div>
         <!--End title edit-->
 
-        <div class="panel" data-panel="paragraph-edit">
+        <div class="panel" data-panel="subtitle-edit">
           <div class="layer-edit">
-            <h2 class="heading-1">Edit paragraph</h2>
+            <h2 class="heading-1">Edit subtitle</h2>
             <div class="form-group">
-              <label for="paragraph-font-selector" class="form-label">Font family</label>
-              <select class="select-input" id="paragraph-font-selector">
+              <label for="subtitle-font-selector" class="form-label">Font family</label>
+              <select class="select-input" id="subtitle-font-selector">
                 <option value="Poppins" style="font-family: 'Poppins', sans-serif">Poppins</option>
                 <option value="Lora" style="font-family: 'Lora', serif">Lora</option>
                 <option value="Open Sans" style="font-family: 'Open Sans', sans-serif">Open Sans</option>
@@ -256,16 +256,16 @@
               <label for="font-family" class="form-label">Font styles</label>
               <div class="checkbox-group">
                 <div class="checkbox-wrapper">
-                  <input type="checkbox" id="turn-bold-paragraph">
+                  <input type="checkbox" id="turn-bold-subtitle" checked>
                   <label for="turn-bold">Bold</label>
                 </div>
       
                 <div class="checkbox-wrapper">
-                  <input type="checkbox" id="turn-italic-paragraph">
+                  <input type="checkbox" id="turn-italic-subtitle">
                   <label for="turn-italic">Italic</label>
                 </div>
                 <div class="checkbox-wrapper">
-                  <input type="checkbox" id="turn-uppercase-paragraph">
+                  <input type="checkbox" id="turn-uppercase-subtitle" checked>
                   <label for="turn-uppercase">Uppercase</label>
                 </div>
               </div>
@@ -273,14 +273,21 @@
             <div class="slider-container">
               <div class="form-label">Font size</div>
               <div class="slider-box">
-                <span class="slider-value" id="paragraph-font-size-value">36</span>
-                <input type="range" min="16" max="120" value="36" id="paragraph-font-size-slider">
+                <span class="slider-value" id="subtitle-font-size-value">32</span>
+                <input type="range" min="16" max="120" value="32" id="subtitle-font-size-slider">
               </div>
             </div>
-            <button id="paragraph-edit-done" class="btn primary">Done</button>         
+            <div class="slider-container">
+              <div class="form-label">Letter spacing</div>
+              <div class="slider-box">
+                <span class="slider-value" id="subtitle-letter-spacing-value">4</span>
+                <input type="range" min="-8" max="8" value="4" id="subtitle-letter-spacing-slider">
+              </div>
+            </div>
+            <button id="subtitle-edit-done" class="btn primary">Done</button>         
           </div>
         </div>
-        <!--End paragraph edit-->
+        <!--End subtitle edit-->
 
         <div class="panel" data-panel="sticker">
           <div class="layer-edit">
@@ -295,7 +302,7 @@
             <button id="sticker-edit-done" class="btn primary">Done</button>         
           </div>
         </div>
-        <!--End paragraph edit-->
+        <!--End subtitle edit-->
 
 
       </div> <!--End sidebar--> 
@@ -303,20 +310,22 @@
       <div class="preview-area">
 
         <div id="output" class="output">
-          <div class="output-text">
+          <div class="output-text" id="output-text">
+            <span id="output-subtitle" class="output-subtitle bold uppercase" contenteditable="true"></span>
             <h1 id="output-title" class="output-title bold" contenteditable="true"></h1>
-            <p id="output-paragraph" class="output-paragraph" contenteditable="true"></p>
           </div>
           <div class="output-overlay" id="color-overlay"></div>
           <img src="" alt="poster-image" id="output-image">
           <div class="guide-line vertical-guide"></div>
           <div class="guide-line horizontal-guide"></div>
-          <!-- <img id="output-element" class="output-element" alt="Drag the image here"> -->
         </div>
+
+        <button class="btn secondary" id="regenerate">Regenerate</button>
 
       </div>
     </div>
     <script src="js/variables.js"></script>
+    <script src="js/generate-thumbnail.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>  

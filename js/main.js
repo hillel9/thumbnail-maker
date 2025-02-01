@@ -25,101 +25,51 @@ showPanel('main');
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-
-  output.classList.add("loading-state");
-  document.querySelector('.output-text').style.display = "none";
-
-  //Reset output
-  posterImage.style.display = "none";
-  colorOverlay.style.backgroundColor = "00FFFFFF";
-  title.innerHTML = "";
-  paragraph.innerHTML = "";
-
-  try {
-
-    //Build prompt for text
-    instructions.title = purpose[0].title + theme.value + stringFormat;
-    instructions.paragraph = purpose[0].paragraph + theme.value + stringFormat;
-
-    if (imageDescriptionInput.value !== "") {
-      imageDescription = `The image should include: ${imageDescriptionInput.value}.`;
-    } else {
-      imageDescription = "";
-    }
-
-    const response = await fetch(webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        theme: theme.value,
-        title: instructions.title,
-        paragraph: instructions.paragraph,
-        style: style.value,
-        ratio: ratio.value,
-        imagedescription: imageDescription
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log(data);
-
-    switch (ratio.value) {
-      case "16:9":
-        output.style.width = "800px";
-        output.style.height = "450px";
-        break;
-      case "9:16":
-        output.style.width = "450px";
-        output.style.height = "800px";
-        break;
-      case "1:1":
-        output.style.width = "600px";
-        output.style.height = "600px";
-        break;
-    }
-
-    //Populate output
-    posterImage.src = data.imageUrl;
-    posterImage.style.display = "block";
-    colorOverlay.style.backgroundColor = data.color;
-    colorOverlaySelector.value = data.color;
-    title.innerHTML = data.title;
-    paragraph.innerHTML = data.paragraph;
-
-    // Error handling
-  } catch (error) {
-    console.error("Error:", error.message);
-  } finally {
-    form.classList.remove("loading");
-    output.classList.remove("loading-state");
-    document.querySelector('.output-text').style.display = "flex";
-    showPanel('designer');
-  }
+  generateThumbnail();
 });
 
-//----------------------------------------------
+regenerateButton.addEventListener("click", async (e) => {
+  generateThumbnail();
+});
 
-// Designer section
+//------------------------ Designer section ------------------------
 
-title.addEventListener("focus", function () {
+
+// Temmplate 1
+
+const template1 = {
+  title: {
+    fontSize: "24px",
+    fontFamily: "Arial, sans-serif",
+    letterSpacing: "1px",
+    textTransform: "uppercase",
+    fontStyle: "normal",
+    fontWeight: "bold"
+  },
+  subtitle: {
+    fontSize: "18px",
+    fontFamily: "Verdana, sans-serif",
+    letterSpacing: "0.5px",
+    textTransform: "uppercase",
+    fontStyle: "normal",
+    fontWeight: "normal"
+  }
+};
+
+
+outputTitle.addEventListener("focus", function () {
   showPanel('title-edit');
 })
 
-paragraph.addEventListener("focus", function () {
-  showPanel('paragraph-edit');
+outputSubtitle.addEventListener("focus", function () {
+  showPanel('subtitle-edit');
 })
 
 titleEditDone.addEventListener("click", function () {
   showPanel('designer');
 })
 
-paragraphEditDone.addEventListener("click", function () {
+subtitleEditDone.addEventListener("click", function () {
   showPanel('designer');
 })
 
@@ -176,41 +126,41 @@ function changeFont(targetLayer, fontSelector) {
 // Update title font
 
 titleFontSelector.addEventListener("change", function () {
-  changeFont(title, titleFontSelector.value);
+  changeFont(outputTitle, titleFontSelector.value);
 });
 
-// Update paragraph font
+// Update subtitle font
 
-paragraphFontSelector.addEventListener("change", function () {
-  changeFont(paragraph, paragraphFontSelector.value);
+subtitleFontSelector.addEventListener("change", function () {
+  changeFont(outputSubtitle, subtitleFontSelector.value);
 });
 
 // Update title styles
 
 document.getElementById("turn-bold-title").onchange = () => {
-  title.classList.toggle("bold");
+  outputTitle.classList.toggle("bold");
 };
 
 document.getElementById("turn-italic-title").onchange = () => {
-  title.classList.toggle("italic");
+  outputTitle.classList.toggle("italic");
 };
 
 document.getElementById("turn-uppercase-title").onchange = () => {
-  title.classList.toggle("uppercase");
+  outputTitle.classList.toggle("uppercase");
 };
 
-// Update paragraph styles
+// Update subtitle styles
 
-document.getElementById("turn-bold-paragraph").onchange = () => {
-  paragraph.classList.toggle("bold");
+document.getElementById("turn-bold-subtitle").onchange = () => {
+  outputSubtitle.classList.toggle("bold");
 };
 
-document.getElementById("turn-italic-paragraph").onchange = () => {
-  paragraph.classList.toggle("italic");
+document.getElementById("turn-italic-subtitle").onchange = () => {
+  outputSubtitle.classList.toggle("italic");
 };
 
-document.getElementById("turn-uppercase-paragraph").onchange = () => {
-  paragraph.classList.toggle("uppercase");
+document.getElementById("turn-uppercase-subtitle").onchange = () => {
+  outputSubtitle.classList.toggle("uppercase");
 };
 
 colorOverlaySelector.onchange = () => {
@@ -292,15 +242,15 @@ cells.forEach((cell, index) => {
 // Toggle visibility
 
 document.getElementById("title-visibility").onclick = () => {
-  title.classList.toggle("visibility");
+  outputTitle.classList.toggle("visibility");
   document.querySelector('#title-visibility .visible-on').classList.toggle('hide');
   document.querySelector('#title-visibility .visible-off').classList.toggle('hide');
 };
 
-document.getElementById("paragraph-visibility").onclick = () => {
-  paragraph.classList.toggle("visibility");
-  document.querySelector('#paragraph-visibility .visible-on').classList.toggle('hide');
-  document.querySelector('#paragraph-visibility .visible-off').classList.toggle('hide');
+document.getElementById("subtitle-visibility").onclick = () => {
+  outputSubtitle.classList.toggle("visibility");
+  document.querySelector('#subtitle-visibility .visible-on').classList.toggle('hide');
+  document.querySelector('#subtitle-visibility .visible-off').classList.toggle('hide');
 };
 
 //Title font size
@@ -309,18 +259,18 @@ titleFontSizeSlider.addEventListener("input", function () {
   const value = this.value;
   const size = value + "px";
 
-  title.style.fontSize = size;
+  outputTitle.style.fontSize = size;
   titleFontSizeValue.textContent = size;
 });
 
-// Paragraph font size
+// subtitle font size
 
-paragraphFontSizeSlider.addEventListener("input", function () {
+subtitleFontSizeSlider.addEventListener("input", function () {
   const value = this.value;
   const size = value + "px";
 
-  paragraph.style.fontSize = size;
-  paragraphFontSizeValue.textContent = size;
+  outputSubtitle.style.fontSize = size;
+  subtitleFontSizeValue.textContent = size;
 });
 
 // Title letter spacing
@@ -329,12 +279,22 @@ titleLetterSpacingSlider.addEventListener("input", function () {
   const value = this.value;
   const size = value + "px";
 
-  title.style.letterSpacing = size;
+  outputTitle.style.letterSpacing = size;
   titleLetterSpacingValue.textContent = size;
 });
 
+// subtitle letter spacing
+
+subtitleLetterSpacingSlider.addEventListener("input", function () {
+  const value = this.value;
+  const size = value + "px";
+
+  outputSubtitle.style.letterSpacing = size;
+  subtitleLetterSpacingValue.textContent = size;
+});
 
 // Sticker scale slider
+
 const elementScaleSlider= document.getElementById("element-scale-slider");
 const elementScaleValue = document.getElementById("element-scale-value");
 
@@ -343,7 +303,6 @@ elementScaleSlider.addEventListener("input", function () {
   activeSticker.style.transform = `scale(${value})`;
   elementScaleValue.textContent = value;
 });
-
 
 const imageInput = document.getElementById('image-input');
 const verticalGuide = document.querySelector('.vertical-guide');

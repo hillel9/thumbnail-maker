@@ -39,6 +39,11 @@ body {
 .preview-area{
   flex-grow: 1;
   background-color: var(--tone7);
+  display: flex; flex-direction: column; gap: 16px; align-items: center;
+}
+
+#regenerate{
+  display: none;
 }
 
 .heading{
@@ -213,11 +218,11 @@ input[type="checkbox"] {
 }
 
 .color-picker {
-  appearance: none; /* Remove the default browser styling */
+  appearance: none;
   width: 32px;
   height: 32px;
   border: none;
-  border-radius: 50%; /* Make it circular */
+  border-radius: 50%;
   cursor: pointer;
   overflow: hidden;
   padding: 0;
@@ -357,32 +362,34 @@ font-family: "Roboto", helvetica, sans-serif;
   flex: none;
   order: 0;
   flex-grow: 0;
-  display: none; flex-direction:column; gap:8px;
+  display: none; flex-direction:column; gap:4px;
 }
 
-.output-title {
-  font-size: 72px;
-  line-height: 110%;
+.output-subtitle {
+  font-size: 32px;
+  letter-spacing: 4px;
   margin:0;
   box-sizing:border-box;
   border-radius: 8px;
   padding: 8px;
 }
 
-.output-title:hover, .output-title:focus{
+.output-subtitle:hover, .output-title:focus{
   box-shadow: 0 0 0 2px #fff;
   outline:none;
 }
 
-.output-paragraph {
-  font-size: 36px;
-  line-height: 140%;
+.output-title {
+  font-size: 64px;
+  letter-spacing: normal;
+  line-height: 120%;
   margin: 0;
+  box-sizing:border-box;
   border-radius: 8px;
   padding: 8px;
 }
 
-.output-paragraph:hover, .output-paragraph:focus{
+.output-title:hover, .output-paragraph:focus{
   box-shadow: 0 0 0 2px #fff;
   outline:none;
 }
@@ -398,13 +405,13 @@ font-family: "Roboto", helvetica, sans-serif;
 }
 
 #output-image {
-  display: none;
   object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  display: none;
 }
 
 

@@ -69,20 +69,40 @@ const template1 = {
 };
 
 
-outputTitle.addEventListener("focus", function () {
+function deselect(){
+  outputTitle.setAttribute("contenteditable", "false");
+  outputTitle.blur();
+  outputSubtitle.setAttribute("contenteditable", "false");
+  outputSubtitle.blur();
+  showPanel('designer');
+}
+
+outputTitle.addEventListener("click", function () {
   showPanel('title-edit');
+  this.setAttribute("contenteditable", "true");
+  this.focus();
 })
 
-outputSubtitle.addEventListener("focus", function () {
+outputSubtitle.addEventListener("click", function () {
   showPanel('subtitle-edit');
+  this.setAttribute("contenteditable", "true");
+  this.focus();  
+})
+
+outputTitle.addEventListener("blur", function () {
+  this.setAttribute("contenteditable", "false");
+})
+
+outputSubtitle.addEventListener("blur", function () {
+  this.setAttribute("contenteditable", "false");
 })
 
 titleEditDone.addEventListener("click", function () {
-  showPanel('designer');
+  deselect();
 })
 
 subtitleEditDone.addEventListener("click", function () {
-  showPanel('designer');
+  deselect();
 })
 
 stickerEditDone.addEventListener("click", function () {

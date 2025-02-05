@@ -240,6 +240,9 @@ input[type="checkbox"] {
   padding: 0;
   background: none;
 }
+#background-color-title-selector{
+display: none;
+}
 
 /* Add a custom border */
 .color-picker::-webkit-color-swatch-wrapper {
@@ -383,7 +386,7 @@ font-family: "Roboto", helvetica, sans-serif;
   margin:0;
   box-sizing:border-box;
   border-radius: 8px;
-  padding: 8px;
+  padding: 16px 10px 16px 16px;
 }
 
 .output-subtitle:hover, .output-title:focus{
@@ -398,7 +401,7 @@ font-family: "Roboto", helvetica, sans-serif;
   margin: 0;
   box-sizing:border-box;
   border-radius: 8px;
-  padding: 8px;
+  padding: 16px 10px 16px 16px;
 }
 
 .output-title:hover, .output-paragraph:focus{

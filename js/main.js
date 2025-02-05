@@ -211,6 +211,30 @@ slider.addEventListener("input", function () {
   opacityValue.textContent = value + "%";
 });
 
+// Add background title
+
+addBackgroundTitle.onchange = () => {
+  if (addBackgroundTitle.checked) {
+    outputTitle.style.backgroundColor = titleBackgroundSelector.value;
+    titleBackgroundSelector.style.display = "block";
+  } else {
+    outputTitle.style.backgroundColor = "transparent";
+    titleBackgroundSelector.style.display = "none";
+  }
+};
+
+// Background color selector
+
+titleBackgroundSelector.onchange = () => {
+  outputTitle.style.backgroundColor = titleBackgroundSelector.value;
+  const contrastRatio = getContrastRatio(titleBackgroundSelector.value, "white");
+  if (contrastRatio < 3) {
+    outputTitle.style.color = "white";
+  } else {
+    outputTitle.style.color = "black";
+  }
+};
+
 // Layout selector
 
 document.querySelectorAll(".grid-cell").forEach((cell) => {

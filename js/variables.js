@@ -86,3 +86,5 @@ const subtitleFontSizeValue = document.getElementById("subtitle-font-size-value"
 const subtitleLetterSpacingSlider = document.getElementById("subtitle-letter-spacing-slider");
 const subtitleLetterSpacingValue = document.getElementById("subtitle-letter-spacing-value");
 const subtitleFontSelector = document.getElementById("subtitle-font-selector");
+const subtitleSkewSlider = document.getElementById("subtitle-skew-slider");
+const subtitleSkewValue = document.getElementById("subtitle-skew-value");

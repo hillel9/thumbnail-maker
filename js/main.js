@@ -221,16 +221,18 @@ titleSkewSlider.addEventListener("input", function () {
   titleSkewValue.textContent = value;
 });
 
+// Skew subtitle
+
+subtitleSkewSlider.addEventListener("input", function () {
+  const value = this.value;
+  outputSubtitle.style.transform = `skewX(${value}deg)`;
+  subtitleSkewValue.textContent = value;
+});
+
 // Background color selector
 
 titleBackgroundSelector.onchange = () => {
   outputTitle.style.backgroundColor = titleBackgroundSelector.value;
-  const contrastRatio = getContrastRatio(titleBackgroundSelector.value, "white");
-  if (contrastRatio < 3) {
-    outputTitle.style.color = "white";
-  } else {
-    outputTitle.style.color = "black";
-  }
 };
 
 // Layout selector

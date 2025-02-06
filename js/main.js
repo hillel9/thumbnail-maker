@@ -49,6 +49,10 @@ theme.onchange = ()=>{
 
 document.getElementById('help-describe-image').onclick = ()=>{
 describeImage();
+  // Analytics
+  gtag('event', 'describe_image', {
+    'description': imageDescriptionInput.value
+  });
 }
 
 //------------------------ Designer section ------------------------

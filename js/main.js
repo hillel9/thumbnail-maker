@@ -48,7 +48,8 @@ theme.onchange = ()=>{
 }
 
 document.getElementById('help-describe-image').onclick = ()=>{
-describeImage();
+  describeImage();
+  
   // Analytics
   gtag('event', 'describe_image', {
     'description': imageDescriptionInput.value

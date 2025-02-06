@@ -47,28 +47,6 @@ describeImage();
 //------------------------ Designer section ------------------------
 
 
-// Temmplate 1
-
-const template1 = {
-  title: {
-    fontSize: "24px",
-    fontFamily: "Arial, sans-serif",
-    letterSpacing: "1px",
-    textTransform: "uppercase",
-    fontStyle: "normal",
-    fontWeight: "bold"
-  },
-  subtitle: {
-    fontSize: "18px",
-    fontFamily: "Verdana, sans-serif",
-    letterSpacing: "0.5px",
-    textTransform: "uppercase",
-    fontStyle: "normal",
-    fontWeight: "normal"
-  }
-};
-
-
 function deselect(){
   outputTitle.setAttribute("contenteditable", "false");
   outputTitle.blur();
@@ -222,6 +200,14 @@ addBackgroundTitle.onchange = () => {
     titleBackgroundSelector.style.display = "none";
   }
 };
+
+// Skew title
+
+titleSkewSlider.addEventListener("input", function () {
+  const value = this.value;
+  outputTitle.style.transform = `skewX(${value}deg)`;
+  titleSkewValue.textContent = value;
+});
 
 // Background color selector
 

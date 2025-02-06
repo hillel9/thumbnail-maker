@@ -75,6 +75,8 @@ const titleLetterSpacingValue = document.getElementById("title-letter-spacing-va
 const titleFontSelector = document.getElementById("title-font-selector");
 const titleBackgroundSelector = document.getElementById("background-color-title-selector");
 const addBackgroundTitle = document.getElementById("add-background-title");
+const titleSkewSlider = document.getElementById("title-skew-slider");
+const titleSkewValue = document.getElementById("title-skew-value");
 
 //Subtitle
 const subtitleEditDone = document.getElementById("subtitle-edit-done");

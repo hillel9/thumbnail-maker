@@ -505,3 +505,5 @@ function allFeatures(sticker) {
   document.addEventListener('mousemove', moveHandler);
   document.addEventListener('mouseup', upHandler);
 }
+
+gtag('event', 'debug_mode', {'debug_mode': true});

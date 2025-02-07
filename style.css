@@ -557,8 +557,7 @@ background-color: var(--tone6);
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(20,20,20,0.4);
 }
 
 /* Modal Content/Box */
@@ -576,6 +575,10 @@ background-color: var(--tone6);
   position: absolute;
   top: 8px;
   right: 8px;
+}
+
+.close svg{
+  fill: var(--tone1);
 }
 
 .modal-title{

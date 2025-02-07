@@ -624,9 +624,6 @@ document.querySelector("#template-item-2-selector").addEventListener("click", fu
   
 });
 
-
-
-
 // Get the modal
 const modal = document.getElementById("feedback-modal");
 const sendFeedbackButton = document.getElementById("send-feedback-button");
@@ -636,6 +633,8 @@ const feedbackForm = document.getElementById("feedback-form");
 
 sendFeedbackButton.onclick = function() {
   modal.style.display = "block";
+  document.getElementById("feedback-form").style.display = "flex";
+  document.getElementById("success-message").style.display = "none";
 }
 
 closeButton.onclick = function() {

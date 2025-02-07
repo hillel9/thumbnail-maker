@@ -194,6 +194,18 @@ margin: 0;
   background-color: var(--primary-dark);  
 }
 
+.danger{
+  background-color: var(--danger-main);
+}
+
+.danger:hover{
+  background-color: var(--danger-dark);
+}
+
+.danger svg{
+  fill: var(--danger-contrastText);
+}
+
 .secondary{
   background-color: var(--tone8);
   border: 1px solid var(--tone4);

@@ -29,7 +29,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   generateThumbnail();
 
-  Analytics
+  //Analytics
   gtag('event', 'generate_thumbnail', {
     'ratio': ratio.value,
     'theme': theme.value,
@@ -358,6 +358,14 @@ elementScaleSlider.addEventListener("input", function () {
   const value = this.value;
   activeSticker.style.transform = `scale(${value})`;
   elementScaleValue.textContent = value;
+});
+
+// Sticker remove
+const stickerRemove = document.getElementById("sticker-remove");
+
+stickerRemove.addEventListener("click", function () {
+  activeSticker.remove();
+  showPanel('designer');
 });
 
 const imageInput = document.getElementById('image-input');

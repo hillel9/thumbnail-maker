@@ -272,9 +272,12 @@ display: none;
 }
 
 .current-template{
-border: 2px solid var(--primary-main);
+border: 4px solid var(--primary-dark);
 }
 
+.suggestion-text{
+  min-height: 21px;
+}
 
 /* ---------------------------- layout selector ---------------------------- */
 
@@ -377,7 +380,7 @@ font-family: "Roboto", helvetica, sans-serif;
   flex: none;
   order: 0;
   flex-grow: 0;
-  display: none; flex-direction:column; gap:4px;
+  display: none; flex-direction:column; gap:0px;
 }
 
 .output-subtitle {
@@ -386,7 +389,7 @@ font-family: "Roboto", helvetica, sans-serif;
   margin:0;
   box-sizing:border-box;
   border-radius: 8px;
-  padding: 16px 10px 16px 16px;
+  padding: 12px 8px 12px 12px;
 }
 
 .output-subtitle:hover, .output-title:focus{
@@ -401,7 +404,7 @@ font-family: "Roboto", helvetica, sans-serif;
   margin: 0;
   box-sizing:border-box;
   border-radius: 8px;
-  padding: 16px 10px 16px 16px;
+  padding: 12px 8px 12px 12px;
 }
 
 .output-title:hover, .output-paragraph:focus{

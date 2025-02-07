@@ -72,7 +72,7 @@
             <div class="form-group">
               <label for="image-description" class="form-label">Additional image description (Optional)</label>
               <textarea class="textarea-input" id="image-description" placeholder="Write here what your image should include..." autocomplete="off"></textarea>
-              <span class="link-looking" id="help-describe-image">Suggest me a description for my image</span>
+              <div class="suggestion-text"><span class="link-looking" id="help-describe-image">Suggest me a description for my image</span></div>
             </div>
             <button type="submit" class="btn primary" id="generate-main">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,12 +97,12 @@
             <div class="form-group">
               <label for="font-family" class="form-label">Template</label>
               <div class="template-list">
-                <div class="template-item current-template">
+                <div class="template-item current-template" id="template-item-1-selector">
                   <img src="img/template_preview_1.png" alt="template">
                 </div>
-                <div class="template-item">
-                  <span>Coming soon</span>
-                </div>               
+                <div class="template-item" id="template-item-2-selector">
+                  <img src="img/template_preview_2.png" alt="template">
+                </div>              
               </div>
             </div>           
             <div class="slider-container">

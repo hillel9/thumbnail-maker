@@ -5,7 +5,7 @@ async function generateThumbnail(){
     //Reset output
     outputImage.style.display = "none";
     outputText.style.display = "none";
-    colorOverlay.style.backgroundColor = "00FFFFFF";
+    colorOverlay.style.backgroundColor = "transparent";
   
     try {
   

@@ -190,15 +190,15 @@ colorOverlaySelector.onchange = () => {
 };
 
 // Color opacity slider
-const slider = document.getElementById("opacitySlider");
-const opacityValue = document.getElementById("opacityValue");
+const colorOverlayOpacitySlider = document.getElementById("opacitySlider");
+const colorOverlayOpacityValue = document.getElementById("opacityValue");
 
-slider.addEventListener("input", function () {
+colorOverlayOpacitySlider.addEventListener("input", function () {
   const value = this.value;
   const opacity = value / 100;
 
   colorOverlay.style.opacity = opacity;
-  opacityValue.textContent = value + "%";
+  colorOverlayOpacityValue.textContent = value + "%";
 });
 
 // Add background title
@@ -512,3 +512,116 @@ function allFeatures(sticker) {
   document.addEventListener('mousemove', moveHandler);
   document.addEventListener('mouseup', upHandler);
 }
+
+
+
+
+document.querySelector("#template-item-1-selector").addEventListener("click", function(){
+
+  document.querySelectorAll(".template-item").forEach(item => {
+    item.classList.remove("current-template");
+  });
+  this.classList.add("current-template");
+
+  colorOverlay.style.opacity = "0.6";
+  colorOverlay.style.width = "100%";
+
+  output.style.alignItems = "flex-end";
+  output.style.textAlign = "left";
+
+  outputTitle.style.fontSize = "64px";
+  outputSubtitle.style.letterSpacing = "4px";
+  outputTitle.style.transform = "skewX(0deg)";
+  outputSubtitle.style.transform = "skewX(0deg)";
+  outputSubtitle.style.fontSize = "32px";
+  outputTitle.style.letterSpacing = "0px";
+  outputTitle.style.backgroundColor = "transparent";
+  
+
+  outputTitle.style.width = "100%";
+  outputSubtitle.style.width = "100%";
+
+  outputImage.style.left = "0px";
+
+  //Designer Overlay
+  colorOverlayOpacitySlider.value = 60;
+  colorOverlayOpacityValue.textContent = "60%";
+
+  //Designer Layout
+  cells.forEach((c) => c.classList.remove("active"));
+  cells[6].classList.add("active");
+
+  //Designer Title
+  titleFontSizeSlider.value = 64;
+  titleFontSizeValue.textContent = "64px";
+  titleLetterSpacingSlider.value = 0;
+  titleLetterSpacingValue.textContent = "0px";
+  titleSkewSlider.value = 0;
+  titleSkewValue.textContent = "0";
+  addBackgroundTitle.checked = false;
+  titleBackgroundSelector.style.display = "none";
+
+  //Designer Subtitle
+  subtitleFontSizeSlider.value = 32;
+  subtitleFontSizeValue.textContent = "32px";
+  subtitleLetterSpacingSlider.value = 4;
+  subtitleLetterSpacingValue.textContent = "4px";
+  subtitleSkewSlider.value = 0;
+  subtitleSkewValue.textContent = "0";
+  
+});
+
+document.querySelector("#template-item-2-selector").addEventListener("click", function(){
+
+  document.querySelectorAll(".template-item").forEach(item => {
+    item.classList.remove("current-template");
+  });
+  this.classList.add("current-template");
+
+  colorOverlay.style.opacity = 1;
+  colorOverlay.style.width = "50%";
+
+  output.style.alignItems = "center";
+  output.style.textAlign = "left";
+
+  outputTitle.style.fontSize = "48px";
+  outputSubtitle.style.letterSpacing = "4px";
+  outputTitle.style.transform = "skewX(0deg)";
+  outputSubtitle.style.transform = "skewX(0deg)";
+  outputSubtitle.style.fontSize = "24px";
+  outputTitle.style.letterSpacing = "0px";
+  outputTitle.style.backgroundColor = "transparent";
+  
+
+  outputTitle.style.width = "calc(50% - 24px)";
+  outputSubtitle.style.width = "calc(50% - 24px)";
+
+  outputImage.style.left = "200px";
+
+  //Designer Overlay
+  colorOverlayOpacitySlider.value = 100;
+  colorOverlayOpacityValue.textContent = "100%";
+
+  //Designer Layout
+  cells.forEach((c) => c.classList.remove("active"));
+  cells[3].classList.add("active");
+
+  //Designer Title
+  titleFontSizeSlider.value = 48;
+  titleFontSizeValue.textContent = "48px";
+  titleLetterSpacingSlider.value = 0;
+  titleLetterSpacingValue.textContent = "0px";
+  titleSkewSlider.value = 0;
+  titleSkewValue.textContent = "0";
+  addBackgroundTitle.checked = false;
+  titleBackgroundSelector.style.display = "none";
+
+  //Designer Subtitle
+  subtitleFontSizeSlider.value = 24;
+  subtitleFontSizeValue.textContent = "24px";
+  subtitleLetterSpacingSlider.value = 4;
+  subtitleLetterSpacingValue.textContent = "4px";
+  subtitleSkewSlider.value = 0;
+  subtitleSkewValue.textContent = "0";
+  
+});

@@ -25,6 +25,9 @@
     <div class="top-bar">
       <img src="img/thumbnail-maker-icon.svg" alt="thumbnail">
       <h1>AI Thumbnail Maker</h1>
+      <div class="top-bar-right">
+        <button class="btn secondary" id="send-feedback-button">Send a feedback</button>
+      </div>
     </div>
     <div class="wrapper">
       <div class="sidebar">
@@ -349,9 +352,33 @@
 
       </div>
     </div>
+
+    <div id="feedback-modal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <h1 class="modal-title">Feedback</h1>
+        <button class="close btn secondary" id="feedback-modal-close">Close</button>
+        <form action="" id="feedback-form">
+          <div class="form-group">
+            <label for="feedback-text" class="form-label">Give me your feedback or request a feature</label>
+            <textarea class="textarea-input" id="feedback-text" placeholder="I never commit to anything..."
+              autocomplete="off"></textarea>
+          </div>
+          <button type="submit" class="btn primary" id="feedback-submit">Send</button>
+        </form>
+        <div id="success-message">
+          <p class="modal-text">Your feedback has been sent into the void—I'll mention it to my boss, but let’s be real, it might end up in the ‘meh’ pile of destiny!</p>
+          <button class="btn primary" id="success-message-close">Hope for the best! 🤞</button>
+        </div>
+      </div>
+    
+    </div>
+
     <script src="js/variables.js"></script>
     <script src="js/generate-thumbnail.js"></script>
     <script src="js/describe-image.js"></script>
+    <script src="js/send-feedback.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>  

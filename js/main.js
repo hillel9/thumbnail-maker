@@ -623,3 +623,37 @@ document.querySelector("#template-item-2-selector").addEventListener("click", fu
   subtitleSkewValue.textContent = "0";
   
 });
+
+
+
+
+// Get the modal
+const modal = document.getElementById("feedback-modal");
+const sendFeedbackButton = document.getElementById("send-feedback-button");
+const closeButton = document.getElementById("feedback-modal-close");
+const closeButton2 = document.getElementById("success-message-close");
+const feedbackForm = document.getElementById("feedback-form");
+
+sendFeedbackButton.onclick = function() {
+  modal.style.display = "block";
+}
+
+closeButton.onclick = function() {
+  modal.style.display = "none";
+}
+
+closeButton2.onclick = function() {
+  modal.style.display = "none";
+}
+
+feedbackForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  sendFeedback();
+});
+
+// When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// }

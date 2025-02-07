@@ -9,7 +9,13 @@ body {
 }
 
 .top-bar{
-  display: flex; flex-direction: row; gap:8px; align-items: center; height: 52px; border-bottom: 1px solid var(--tone5); justify-content: center;
+  display: flex; flex-direction: row; gap:8px; align-items: center; height: 52px; border-bottom: 1px solid var(--tone5); justify-content: center; position: relative;
+}
+
+#send-feedback-button{
+  position: absolute;
+  right: 16px;
+  top: 4px;
 }
 
 .top-bar h1{
@@ -536,4 +542,59 @@ background-color: var(--tone6);
 .visibility-label {
   color: var(--tone1);
   font-size: 16px;
+}
+
+
+/* Modal */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  width: 80%; max-width: 600px;
+  background-color: var(--surface-background);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 40px;
+  border-radius: 16px;
+  display: flex; flex-direction: column; gap: 24px; justify-content: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.modal-title{
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#feedback-form{
+  display: flex; flex-direction: column; gap: 24px; justify-content: center;
+}
+
+.modal-text{
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+#success-message{
+  display: none;
+  flex-direction: column; gap: 24px; justify-content: center;
 }

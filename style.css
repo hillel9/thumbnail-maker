@@ -244,14 +244,13 @@ input[type="checkbox"] {
 display: none;
 }
 
-/* Add a custom border */
 .color-picker::-webkit-color-swatch-wrapper {
   padding: 0;
   border-radius: 50%;
 }
 
 .color-picker::-webkit-color-swatch {
-  border: 2px solid #ccc; /* Custom border */
+  border: 2px solid #ccc;
   border-radius: 50%;
 }
 
@@ -464,8 +463,8 @@ font-family: "Roboto", helvetica, sans-serif;
   top: 0;
   left: 0;
   cursor: grab;
-  width: 200px;
-  height: auto;
+  max-width: 200px;
+  max-height: 300px;
   transition: transform 0.2s ease;
 }
 

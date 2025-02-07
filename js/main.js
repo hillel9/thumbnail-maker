@@ -30,11 +30,11 @@ form.addEventListener("submit", async (e) => {
   generateThumbnail();
 
   // Analytics
-  gtag('event', 'generate_thumbnail', {
-    'ratio': ratio.value,
-    'theme': theme.value,
-    'style': style.value
-  });
+//   gtag('event', 'generate_thumbnail', {
+//     'ratio': ratio.value,
+//     'theme': theme.value,
+//     'style': style.value
+//   });
 });
 
 regenerateButton.addEventListener("click", async (e) => {
@@ -538,8 +538,7 @@ document.querySelector("#template-item-1-selector").addEventListener("click", fu
   outputTitle.style.backgroundColor = "transparent";
   
 
-  outputTitle.style.width = "100%";
-  outputSubtitle.style.width = "100%";
+  outputText.style.width = "100%";
 
   outputImage.style.left = "0px";
 
@@ -593,8 +592,7 @@ document.querySelector("#template-item-2-selector").addEventListener("click", fu
   outputTitle.style.backgroundColor = "transparent";
   
 
-  outputTitle.style.width = "calc(50% - 24px)";
-  outputSubtitle.style.width = "calc(50% - 24px)";
+  outputText.style.width = "calc(50% - 24px)";
 
   outputImage.style.left = "200px";
 

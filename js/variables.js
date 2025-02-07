@@ -13,7 +13,7 @@ const regenerateButton = document.getElementById("regenerate");
 //Prompt variables
 const purpose = [
   {
-    title: "Write me a catchy clickbait video title of max 40 char about ",
+    title: "Write me a catchy engaging video title of max 40 char about ",
     subtitle: "Write me an eyebrow title in 1 or 2 words that reflecting this topic : "
   },
   {

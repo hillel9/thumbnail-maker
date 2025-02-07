@@ -29,12 +29,12 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   generateThumbnail();
 
-  // Analytics
-//   gtag('event', 'generate_thumbnail', {
-//     'ratio': ratio.value,
-//     'theme': theme.value,
-//     'style': style.value
-//   });
+  Analytics
+  gtag('event', 'generate_thumbnail', {
+    'ratio': ratio.value,
+    'theme': theme.value,
+    'style': style.value
+  });
 });
 
 regenerateButton.addEventListener("click", async (e) => {

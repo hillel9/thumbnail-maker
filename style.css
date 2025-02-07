@@ -558,6 +558,7 @@ background-color: var(--tone6);
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(20,20,20,0.4);
+  z-index: 1000;
 }
 
 /* Modal Content/Box */

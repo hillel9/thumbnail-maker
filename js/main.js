@@ -360,6 +360,16 @@ elementScaleSlider.addEventListener("input", function () {
   elementScaleValue.textContent = value;
 });
 
+// Sticker rotate
+
+const elementRotateSlider= document.getElementById("element-rotate-slider");
+const elementRotateValue = document.getElementById("element-rotate-value");
+
+elementRotateSlider.addEventListener("input", function () {
+  const value = this.value;
+  activeSticker.style.transform = `rotate(${value}deg)`;
+  elementRotateValue.textContent = value;
+});
 // Sticker remove
 const stickerRemove = document.getElementById("sticker-remove");
 

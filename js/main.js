@@ -532,7 +532,7 @@ function allFeatures(sticker) {
 }
 
 
-
+// Templates
 
 document.querySelector("#template-item-1-selector").addEventListener("click", function(){
 
@@ -668,9 +668,26 @@ feedbackForm.addEventListener("submit", async (e) => {
   sendFeedback();
 });
 
-// When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// }
+
+
+// Meme gallery
+
+document.querySelectorAll('.gallery-item').forEach(item => {
+  item.addEventListener('click', function() {
+    const sticker = document.createElement('img');
+    sticker.id = 'output-sticker-' + stickerIndex;
+    sticker.className = 'output-sticker';
+    sticker.alt = 'Drag the image here';
+    sticker.src =  this.querySelector('img').src;
+    output.appendChild(sticker);
+    currentSticker = document.getElementById(sticker.id);
+    sticker.onload = function () {
+      snapToCenter(currentSticker);
+    };
+    allFeatures(currentSticker);
+    stickerIndex++;
+  });
+});
+
+
+

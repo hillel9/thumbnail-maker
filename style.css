@@ -615,3 +615,26 @@ background-color: var(--tone6);
   display: none;
   flex-direction: column; gap: 24px; justify-content: center;
 }
+
+
+/* ---------------------------- Meme gallery ---------------------------- */
+
+.gallery-container{
+  display: flex; flex-direction: row; gap: 8px; flex-wrap: wrap;
+}
+
+.gallery-item{
+  width: calc(50% - 4px); box-sizing: border-box;
+  background-color: var(--tone7);
+  border-radius: 4px; overflow: hidden;
+}
+
+.gallery-item:hover{
+  background-color: var(--tone6);
+  cursor: pointer;
+}
+
+.gallery-item img{
+  width: 100%;
+  border-radius: 8px;
+}

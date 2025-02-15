@@ -627,10 +627,11 @@ background-color: var(--tone6);
   width: calc(50% - 4px); box-sizing: border-box;
   background-color: var(--tone7);
   border-radius: 4px; overflow: hidden;
+  border: 2px solid var(--tone7);
 }
 
 .gallery-item:hover{
-  background-color: var(--tone6);
+  border: 2px solid var(--primary-main);
   cursor: pointer;
 }
 
